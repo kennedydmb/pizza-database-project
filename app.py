@@ -10,9 +10,9 @@ app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 mongo = PyMongo(app)
 
 @app.route('/')
-def hello():
-    return 'Hello World ...again'
-
+@app.route('/get_pizzas')
+def get_pizzas():
+    return render_template("pizzas.html", pizzas=mongo.db.pizzas.find(), ingredients=mongo.db.ingredients.find())
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

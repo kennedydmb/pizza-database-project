@@ -1,0 +1,14 @@
+{% extends 'base.html'%} {% block content %}
+<div class="row">
+    {% for pizza in pizzas %}
+    <ul class="collection with-header">
+        <li class="collection-header">
+            <h4>{{ pizza.pizza_name }}</h4>
+        </li>
+        {% for item in pizza.toppings %}
+        <li class="collection-item">{{item}}</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+</div>
+{% endblock %}
