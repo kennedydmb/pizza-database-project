@@ -3,6 +3,8 @@ import os
 from flask import Flask
 
 app = Flask(__name__)
+app.config["MONGO_DBNAME"] = 'pizza_manager'
+app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 
 
 @app.route('/')
