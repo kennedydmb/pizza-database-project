@@ -13,7 +13,7 @@ mongo = PyMongo(app)
 @app.route('/get_pizzas')
 def get_pizzas():
     return render_template("pizzas.html", pizzas=mongo.db.pizzas.find(), ingredients=mongo.db.ingredients.find())
-
+    
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
