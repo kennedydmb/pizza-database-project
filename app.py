@@ -11,9 +11,10 @@ mongo = PyMongo(app)
 
 meat = mongo.db.ingredients.find_one({'meat' : {'$exists': True}})
 veg = mongo.db.ingredients.find_one({'veg' : {'$exists': True}})
-                    
+sauce = mongo.db.ingredients.find_one({'sauce' : {'$exists': True}})
+
+print(sauce)
 print(veg)
-print(meat)
                             
 @app.route('/')
 @app.route('/get_pizzas')
@@ -21,7 +22,8 @@ def get_pizzas():
     return render_template("pizzas.html",
                            pizzas=mongo.db.pizzas.find(), 
                            meat = meat,
-                           veg = veg)
+                           veg = veg,
+                           sauce = sauce)
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

@@ -7,6 +7,12 @@
                 <li class="collection-header">
                     <h4>{{ pizza.pizza_name.capitalize() }}</h4>
                 </li>
+                <li class="collection-item">
+                    <i class="{{pizza.sauce_type}} tiny material-icons">brightness_1</i>{{pizza.sauce_type.capitalize()}}
+                </li> 
+                <li class="collection-item">
+                    <i class="cheese tiny material-icons">brightness_1</i>{{pizza.cheese_type.capitalize()}}
+                </li>
                 {% for topping in pizza.toppings %}
                     {% for v in veg.veg %}
                         {% if v == topping %}

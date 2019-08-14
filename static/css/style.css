@@ -1,6 +1,27 @@
-.meat{
-    color:red;
+.meat {
+    color: red;
 }
-.veg{
-    color:green;
+
+.veg {
+    color: green;
+}
+
+.cheese {
+    color: #f6fa00;
+}
+
+.pizza {
+    color: #c70505;
+}
+
+.bbq {
+    color: #702400
+}
+
+.tomato-garlic {
+    color: #ff4b0a
+}
+
+.none {
+    color: grey
 }
