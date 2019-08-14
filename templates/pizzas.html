@@ -1,16 +1,27 @@
 {% extends 'base.html'%} {% block content %}
 <div class="row">
-    <div class="row">
+    <div class="row ">
         {% for pizza in pizzas %}
         <div class="card">
             <ul class="collection with-header">
                 <li class="collection-header">
-                    <h4>{{ pizza.pizza_name }}</h4>
+                    <h4>{{ pizza.pizza_name.capitalize() }}</h4>
                 </li>
                 {% for topping in pizza.toppings %}
-                <li class="collection-item">
-                    <i class="veg tiny material-icons">brightness_1</i>{{topping}}
-                </li>
+                    {% for v in veg.veg %}
+                        {% if v == topping %}
+                            <li class="collection-item">
+                                <i class="veg tiny material-icons">brightness_1</i>{{topping.capitalize()}}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% for m in meat.meat %}
+                        {% if m == topping %}
+                            <li class="collection-item">
+                                <i class="meat tiny material-icons">brightness_1</i>{{topping.capitalize()}}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
                 {% endfor %}
             </ul>
         </div>
