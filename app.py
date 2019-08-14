@@ -9,15 +9,19 @@ app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 
 mongo = PyMongo(app)
 
-
-
+meat = mongo.db.ingredients.find_one({'meat' : {'$exists': True}})
+veg = mongo.db.ingredients.find_one({'veg' : {'$exists': True}})
+                    
+print(veg)
+print(meat)
+                            
 @app.route('/')
 @app.route('/get_pizzas')
 def get_pizzas():
-    ingredients = list(mongo.db.ingredients.find({'topping_type':'veg'}))
     return render_template("pizzas.html",
                            pizzas=mongo.db.pizzas.find(), 
-                           ingredients=ingredients)
+                           meat = meat,
+                           veg = veg)
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
