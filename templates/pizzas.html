@@ -1,43 +1,20 @@
 {% extends 'base.html'%} {% block content %}
 <div class="row">
-    {% for pizza in pizzas %}
-    <div class="card">
-        <ul class="collection with-header">
-            <li class="collection-header">
-                <h4>{{ pizza.pizza_name }}</h4>
-            </li>
-            {% for topping in pizza.toppings %}
-            <li class="collection-item">
-                {% for ing in ingredients %}
-                    {% if ing.topping == topping %}
-                        {% if is_meat == True %}
-                            <i class="meat tiny material-icons">brightness_1</i>{{topping}}
-                        {% elif ing.is_meat == False %}
-                            <i class="veg tiny material-icons">brightness_1</i>{{topping}}
-                        {% endif %}
-                    {% endif %}
-                {% endfor %} 
-            </li>
-            {% endfor %}
-        </ul>
+    <div class="row">
+        {% for pizza in pizzas %}
+        <div class="card">
+            <ul class="collection with-header">
+                <li class="collection-header">
+                    <h4>{{ pizza.pizza_name }}</h4>
+                </li>
+                {% for topping in pizza.toppings %}
+                <li class="collection-item">
+                    <i class="veg tiny material-icons">brightness_1</i>{{topping}}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
-<div class="row">
-    {% for ing in ingredients %}
-    <div class="card">
-        <ul class="collection with-header">
-            <li class="collection-header">
-                <h4>{{ ing.topping }}</h4>
-            </li>
-            {% for meatcheck in ing.is_meat %}
-            <li class="collection-item">
-                
-                            <i class="meat tiny material-icons">brightness_1</i>{{meatcheck}}
-                       
-            {% endfor %}
-        </ul>
-    </div>
-    {% endfor %}
 </div>
 {% endblock %}
