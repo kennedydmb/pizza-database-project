@@ -9,26 +9,28 @@ app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 
 mongo = PyMongo(app)
 
-meat = mongo.db.ingredients.find_one({'meat' : {'$exists': True}})
-veg = mongo.db.ingredients.find_one({'veg' : {'$exists': True}})
-sauce = mongo.db.ingredients.find_one({'sauce' : {'$exists': True}})
-
+meats = mongo.db.ingredients.find_one({'meats' : {'$exists': True}})
+vegs = mongo.db.ingredients.find_one({'vegs' : {'$exists': True}})
+sauces = mongo.db.ingredients.find_one({'sauces' : {'$exists': True}})
+cheeses = mongo.db.ingredients.find_one({'cheeses' : {'$exists': True}})
                             
 @app.route('/')
 @app.route('/get_pizzas')
 def get_pizzas():
     return render_template("pizzas.html",
                            pizzas=mongo.db.pizzas.find(), 
-                           meat = meat,
-                           veg = veg,
-                           sauce = sauce)
+                           meats = meats,
+                           vegs = vegs,
+                           sauces = sauces,
+                           cheeses = cheeses)
 
 @app.route('/add_pizza')
 def add_pizza():
     return render_template("addpizza.html", 
-                           meat = meat,
-                           veg = veg,
-                           sauce = sauce)
+                           meats = meats,
+                           vegs = vegs,
+                           sauces = sauces,
+                           cheeses = cheeses)
                            
 @app.route('/insert_pizza', methods=['POST'])
 def insert_pizza():
