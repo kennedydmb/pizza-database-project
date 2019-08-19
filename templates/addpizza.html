@@ -10,8 +10,8 @@
                     </i>
                     <select id="sauce_type" name="sauce_type">
                   <option value="" disabled selected>Choose Sauce</option>
-                  {% for sauce in sauces.sauces %}
-                      <option value="{{sauce}}">{{sauce.capitalize()}}</option>
+                  {% for sauce in sauces %}
+                      <option value="{{sauce.sauce_type}}">{{sauce.sauce_type.capitalize()}}</option>)
                   {% endfor %}
                 </select>
                     <label>Sauce Type</label>
@@ -45,7 +45,7 @@
                     {% for meat in meats.meats %}
                     <p class="col s4">
                         <input type="checkbox" id="topping_{{meat}}" value="{{meat}}" name="toppings">
-                        <label for="topping_{{meat}}">{{meat.capitalize()}}</label>
+                        <label for="topping_{{meat}}" class="label-fix"></label><span>{{meat.capitalize()}}</span>
                     </p>
                     {% endfor %}
                 </div>
@@ -54,7 +54,7 @@
                     {% for veg in vegs.vegs %}
                     <p class="col s4">
                         <input type="checkbox" id="topping_{{veg}}" value="{{veg}}" name="toppings">
-                        <label for="topping_{{veg}}">{{veg.capitalize()}}</label>
+                        <label for="topping_{{veg}}" class="label-fix"></label><span>{{veg.capitalize()}}</span>
                     </p>
                     {% endfor %}
                 </div>
