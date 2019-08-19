@@ -8,27 +8,20 @@
                     <h4>{{ pizza.pizza_name.capitalize() }}</h4>
                 </li>
                 <li class="collection-item">
-                    <i class="{{pizza.sauce_type}} tiny material-icons">brightness_1</i>{{pizza.sauce_type.capitalize()}}
+                    <i class="sauce tiny material-icons">brightness_1</i>{{pizza.sauce_type|title}}
                 </li>
                 <li class="collection-item">
                     <i class="cheese tiny material-icons">brightness_1</i>{{pizza.cheese_type.capitalize()}}
                 </li>
-                {% for topping in pizza.toppings %}
-                    {% for veg in vegs.vegs %}
-                        {% if veg == topping %}
-                            <li class="collection-item">
-                                <i class="veg tiny material-icons">brightness_1</i>{{topping.capitalize()}}
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                    {% for meat in meats.meats %}
-                        {% if meat == topping %}
-                            <li class="collection-item">
-                                <i class="meat tiny material-icons">brightness_1</i>{{topping.capitalize()}}
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                {% endfor %}
+                {% for topping in pizza.toppings %} {% for veg in vegs.vegs %} {% if veg == topping %}
+                <li class="collection-item">
+                    <i class="veg tiny material-icons">brightness_1</i>{{topping.capitalize()}}
+                </li>
+                {% endif %} {% endfor %} {% for meat in meats.meats %} {% if meat == topping %}
+                <li class="collection-item">
+                    <i class="meat tiny material-icons">brightness_1</i>{{topping.capitalize()}}
+                </li>
+                {% endif %} {% endfor %} {% endfor %}
             </ul>
         </div>
         {% endfor %}
