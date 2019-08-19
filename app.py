@@ -53,6 +53,10 @@ def insert_pizza():
     mongo.db.pizzas.insert_one(complex)
     return redirect(url_for('get_pizzas'))
 
+@app.route('/add_topping')
+def add_topping():
+    return render_template('addtopping.html')
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
