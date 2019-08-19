@@ -8,24 +8,22 @@
                 <div class="input-field col s12">
                     <i class="prefix"><i class="fas fa-water"></i></i>
                     </i>
-                    <select id="sauce_type" name="sauce_type">
+                <select id="sauce_type" name="sauce_type">
                   <option value="" disabled selected>Choose Sauce</option>
-                  {% for sauce in sauces %}
-                      <option value="{{sauce.sauce_type}}">{{sauce.sauce_type.capitalize()}}</option>)
+                  {% for sauce in sauces.sauces %}
+                      <option value="{{sauce}}">{{sauce.capitalize()}}</option>
                   {% endfor %}
                 </select>
-                    <label>Sauce Type</label>
-                </div>
                 <!-- Allows user to enter a name for the pizza -->
                 <div class="input-field col s12">
                     <i class="material-icons prefix">create</i>
-                    <input id="pizza_name" name="pizza_name" type="text">
+                    <input id="pizza_name" name="pizza_name" type="text" required>
                     <label for="icon_prefix">Pizza Name</label>
                 </div>
                 <!-- Allows user to enter a short code for the pizza -->
                 <div class="input-field col s12">
                     <i class="prefix"><i class="fas fa-code"></i></i>
-                    <input id="pizza_code" name="pizza_code" type="text">
+                    <input id="pizza_code" name="pizza_code" type="text" minlength="2" maxlength="2">
                     <label for="icon_prefix">Pizza Code (2 Letters)</label>
                 </div>
                 <!-- Displays list of available cheeses and allows user to choose from a list -->
@@ -34,27 +32,32 @@
                     <select id="cheese_type" name="cheese_type">
                   <option value="" disabled selected>Choose Cheese</option>
                   {% for cheese in cheeses.cheeses %}
-                      <option value="{{cheese}}">{{cheese.capitalize()}}</option>
+                      <option value="{{cheese}}">{{cheese|capitalize}}</option>
                   {% endfor %}
                 </select>
                     <label>Cheese Type</label>
                 </div>
+                <div class ="row">
+                    <span class="center-align">Toppings</span>
+                </div>
                 <!-- Displays a checkbox field of all available toppings and allows user to choose pizza toppings -->
+                <!-- Displays all meat toppings -->
                 <div class="row">
-                    <p><i class="fas fa-drumstick-bite"></i>Meat Toppings</p>
+                    <p><i class="fas fa-drumstick-bite topping-size-fix meat"></i>Meat Toppings</p>
                     {% for meat in meats.meats %}
                     <p class="col s4">
                         <input type="checkbox" id="topping_{{meat}}" value="{{meat}}" name="toppings">
-                        <label for="topping_{{meat}}" class="label-fix"></label><span>{{meat.capitalize()}}</span>
+                        <label for="topping_{{meat}}" class="label-fix"></label><span>{{meat|capitalize}}</span>
                     </p>
                     {% endfor %}
                 </div>
+                <!-- Displays all veg toppings -->
                 <div class="row">
-                    <p><i class="fas fa-carrot"></i>Vegtable Toppings</p>
+                    <p><i class="fas fa-carrot topping-size-fix veg"></i>Vegtable Toppings</p>
                     {% for veg in vegs.vegs %}
                     <p class="col s4">
                         <input type="checkbox" id="topping_{{veg}}" value="{{veg}}" name="toppings">
-                        <label for="topping_{{veg}}" class="label-fix"></label><span>{{veg.capitalize()}}</span>
+                        <label for="topping_{{veg}}" class="label-fix"></label><span>{{veg|capitalize}}</span>
                     </p>
                     {% endfor %}
                 </div>
@@ -74,5 +77,4 @@
         </form>
     </div>
 </div>
-
 {% endblock %}
