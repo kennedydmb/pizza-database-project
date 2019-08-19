@@ -41,17 +41,15 @@
                 <label>Cheese Type</label>
             </div>
             <!-- Displays a checkbox field of all available toppings and allows user to choose pizza toppings -->
-            <div class="switch">
-                <label>
-                  <input id="toppings" name="toppings" type="checkbox" value="onions">
-                  <span class="lever"></span>
-                  Is Urgent
-                </label>
-                <label>
-                  <input id="toppings" name="toppings" type="checkbox" value="peppers">
-                  <span class="lever"></span>
-                  Is Urgent
-                </label>
+            <div>
+                <p>
+                    <input type="checkbox" id="toppings[0]" value="Onions" name="toppings">
+                    <label for="toppings[0]">Onions</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="toppings[1]" value="Peppers" name="toppings">
+                    <label for="toppings[1]">Peppers</label>
+                </p>
             </div>
             <!-- Allows user to add any additional details for the pizza -->
             <div class="input-field col s12">
