@@ -12,6 +12,7 @@ mongo = PyMongo(app)
 # Make local dictionaries for database values
 meats = mongo.db.ingredients.find_one({'meats' : {'$exists': True}})
 vegs = mongo.db.ingredients.find_one({'vegs' : {'$exists': True}})
+sauces = mongo.db.ingredients.find_one({'sauces' : {'$exists': True}})
 cheeses = mongo.db.ingredients.find_one({'cheeses' : {'$exists': True}})
                             
 @app.route('/')
@@ -23,7 +24,7 @@ def get_pizzas():
                            pizzas=mongo.db.pizzas.find(), 
                            meats = meats,
                            vegs = vegs,
-                           sauces = mongo.db.sauces.find(),
+                           sauces = sauces,
                            cheeses = cheeses)
 
 # Route for adding new pizzas to the database. Local dicts passed though.
@@ -33,7 +34,7 @@ def add_pizza():
     return render_template("addpizza.html", 
                            meats = meats,
                            vegs = vegs,
-                           sauces = mongo.db.sauces.find(),
+                           sauces = sauces,
                            cheeses = cheeses)
                          
 # Route for posting form created in addpizza.html                           
