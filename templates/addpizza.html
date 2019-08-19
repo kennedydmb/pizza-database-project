@@ -1,19 +1,18 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container">
     <h3>Add Pizza</h3>
-    <div class="row">
-        <form action="{{ url_for('insert_pizza') }}" method="POST" class="col s12">
-            <div class="row">
+    <form action="{{ url_for('insert_pizza') }}" method="POST" class="col s12">
+            <div class="row box">
                 <!-- Pulls list of available sauces from DB and allows user to choose from them -->
                 <div class="input-field col s12">
                     <i class="prefix"><i class="fas fa-water"></i></i>
-                    </i>
-                <select id="sauce_type" name="sauce_type">
+                    <select id="sauce_type" name="sauce_type">
                   <option value="" disabled selected>Choose Sauce</option>
                   {% for sauce in sauces.sauces %}
                       <option value="{{sauce}}">{{sauce.capitalize()}}</option>
                   {% endfor %}
                 </select>
+                </div>
                 <!-- Allows user to enter a name for the pizza -->
                 <div class="input-field col s12">
                     <i class="material-icons prefix">create</i>
@@ -37,44 +36,43 @@
                 </select>
                     <label>Cheese Type</label>
                 </div>
-                <div class ="row">
-                    <span class="center-align">Toppings</span>
-                </div>
-                <!-- Displays a checkbox field of all available toppings and allows user to choose pizza toppings -->
-                <!-- Displays all meat toppings -->
-                <div class="row">
-                    <p><i class="fas fa-drumstick-bite topping-size-fix meat"></i>Meat Toppings</p>
-                    {% for meat in meats.meats %}
-                    <p class="col s4">
-                        <input type="checkbox" id="topping_{{meat}}" value="{{meat}}" name="toppings">
-                        <label for="topping_{{meat}}" class="label-fix"></label><span>{{meat|capitalize}}</span>
-                    </p>
-                    {% endfor %}
-                </div>
-                <!-- Displays all veg toppings -->
-                <div class="row">
-                    <p><i class="fas fa-carrot topping-size-fix veg"></i>Vegtable Toppings</p>
-                    {% for veg in vegs.vegs %}
-                    <p class="col s4">
-                        <input type="checkbox" id="topping_{{veg}}" value="{{veg}}" name="toppings">
-                        <label for="topping_{{veg}}" class="label-fix"></label><span>{{veg|capitalize}}</span>
-                    </p>
-                    {% endfor %}
-                </div>
-                <!-- Allows user to add any additional details for the pizza -->
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">subject</i>
-                    <textarea name="pizza_description" id="pizza_description" class="materialize-textarea"></textarea>
-                    <label for="icon_telephone">Pizza Notes</label>
-                </div>
+            </div>
+            <!-- Displays a checkbox field of all available toppings and allows user to choose pizza toppings -->
+            <!-- Displays all meat toppings -->
+            <div class="row box">
+                <p class="center-align"><i class="fas fa-drumstick-bite topping-size-fix meat icon-space center-align"></i>Meat Toppings</p>
+                <hr/> {% for meat in meats.meats %}
+                <p class="col s4 box">
+                    <input type="checkbox" id="topping_{{meat}}" value="{{meat}}" name="toppings">
+                    <label for="topping_{{meat}}" class="label-fix"></label><span>{{meat|capitalize}}</span>
+                </p>
+                {% endfor %}
+            </div>
+            <!-- Displays all veg toppings -->
+            <div class="row box">
+                <p class="center-align"><i class="fas fa-carrot topping-size-fix veg icon-space"></i>Vegtable Toppings</p>
+                <hr/> {% for veg in vegs.vegs %}
+                <p class="col s4">
+                    <input type="checkbox" id="topping_{{veg}}" value="{{veg}}" name="toppings">
+                    <label for="topping_{{veg}}" class="label-fix"></label><span>{{veg|capitalize}}</span>
+                </p>
+                {% endfor %}
+            </div>
+            <!-- Allows user to add any additional details for the pizza -->
+            <div class="row box">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">subject</i>
+                <textarea name="pizza_description" id="pizza_description" class="materialize-textarea"></textarea>
+                <label for="icon_telephone">Pizza Notes</label>
+            </div>
             </div>
             <!-- Button to submit form -->
-            <div class="row">
+            <div class="row box">
                 <button class="btn waves-effect waves-light" type="submit">Add Pizza
                 <i class="material-icons right">playlist_add</i>
              </button>
             </div>
-        </form>
+    </form>
     </div>
 </div>
 {% endblock %}
