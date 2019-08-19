@@ -1,3 +1,7 @@
+.box {
+    background-color: grey;
+}
+
 /* Colors ------------------------------------------------------------------- */
 
 .meat {
@@ -19,11 +23,18 @@
 /* Fixes -------------------------------------------------------------------- */
 
 /* Fixes alignment of text with checkboxes*/
+
 .label-fix {
-    margin-bottom: -8px;
+    margin-bottom: 3px;
 }
 
 /* Meat and Veg icon size */
+
 .topping-size-fix {
     font-size: 30px;
 }
+
+.icon-space {
+    margin-right: 20px;
+}
+
