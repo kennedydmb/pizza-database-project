@@ -9,12 +9,15 @@ app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 
 mongo = PyMongo(app)
 
+# Make local dictionaries for database values
 meats = mongo.db.ingredients.find_one({'meats' : {'$exists': True}})
 vegs = mongo.db.ingredients.find_one({'vegs' : {'$exists': True}})
 sauces = mongo.db.ingredients.find_one({'sauces' : {'$exists': True}})
 cheeses = mongo.db.ingredients.find_one({'cheeses' : {'$exists': True}})
                             
 @app.route('/')
+# Route for pizzas.html, local dicts passed through. This page displays pizzas 
+# currently in the system.
 @app.route('/get_pizzas')
 def get_pizzas():
     return render_template("pizzas.html",
@@ -24,6 +27,8 @@ def get_pizzas():
                            sauces = sauces,
                            cheeses = cheeses)
 
+# Route for adding new pizzas to the database. Local dicts passed though.
+# User can choose pizza ingredients and add aadditional notes here.
 @app.route('/add_pizza')
 def add_pizza():
     return render_template("addpizza.html", 
@@ -31,11 +36,21 @@ def add_pizza():
                            vegs = vegs,
                            sauces = sauces,
                            cheeses = cheeses)
-                           
+                         
+# Route for posting form created in addpizza.html                           
 @app.route('/insert_pizza', methods=['POST'])
 def insert_pizza():
-    pizzas =  mongo.db.pizzas
-    pizzas.insert_one(request.form.to_dict())
+    pizzas=mongo.db.pizzas
+    complex = {
+	'pizza_name' : request.form.get('pizza_name'),
+	'pizza_code' : request.form.get('pizza_code'),
+	'sauce_type' : request.form.get('sauce_type'),
+	'cheese_type' : request.form.get('cheese_type'),
+	# So you can build your data struture
+	# as you wish but also make it as complex as you need it
+	'toppings' : request.form.getlist('toppings'), # This would embed an array into your dict..
+}
+    mongo.db.pizzas.insert_one(complex)
     return redirect(url_for('get_pizzas'))
 
 if __name__ == '__main__':
