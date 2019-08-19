@@ -1,3 +1,5 @@
+/* Colors ------------------------------------------------------------------- */
+
 .meat {
     color: red;
 }
@@ -10,18 +12,18 @@
     color: #f6fa00;
 }
 
-.pizza {
-    color: #c70505;
+.sauce {
+    color: purple;
 }
 
-.bbq {
-    color: #702400
+/* Fixes -------------------------------------------------------------------- */
+
+/* Fixes alignment of text with checkboxes*/
+.label-fix {
+    margin-bottom: -8px;
 }
 
-.tomato-garlic {
-    color: #ff4b0a
-}
-
-.none {
-    color: grey
+/* Meat and Veg icon size */
+.topping-size-fix {
+    font-size: 30px;
 }
