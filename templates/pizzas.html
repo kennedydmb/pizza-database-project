@@ -1,5 +1,5 @@
 {% extends 'base.html'%} {% block content %}
-<div class="row">
+<div class="container">
     <div class="row ">
         {% for pizza in pizzas %}
         <div class="card">
@@ -9,20 +9,20 @@
                 </li>
                 <li class="collection-item">
                     <i class="{{pizza.sauce_type}} tiny material-icons">brightness_1</i>{{pizza.sauce_type.capitalize()}}
-                </li> 
+                </li>
                 <li class="collection-item">
                     <i class="cheese tiny material-icons">brightness_1</i>{{pizza.cheese_type.capitalize()}}
                 </li>
                 {% for topping in pizza.toppings %}
-                    {% for v in veg.veg %}
-                        {% if v == topping %}
+                    {% for veg in vegs.vegs %}
+                        {% if veg == topping %}
                             <li class="collection-item">
                                 <i class="veg tiny material-icons">brightness_1</i>{{topping.capitalize()}}
                             </li>
                         {% endif %}
                     {% endfor %}
-                    {% for m in meat.meat %}
-                        {% if m == topping %}
+                    {% for meat in meats.meats %}
+                        {% if meat == topping %}
                             <li class="collection-item">
                                 <i class="meat tiny material-icons">brightness_1</i>{{topping.capitalize()}}
                             </li>
