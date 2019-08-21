@@ -1,5 +1,7 @@
 .box {
-    background-color: grey;
+    background-color: #eef0f5;
+    border-radius: 3px;
+    margin-bottom: 20px;
 }
 
 /* Colors ------------------------------------------------------------------- */
@@ -20,12 +22,16 @@
     color: purple;
 }
 
+.red {
+    
+}
+
 /* Fixes -------------------------------------------------------------------- */
 
 /* Fixes alignment of text with checkboxes*/
 
 .label-fix {
-    margin-bottom: 3px;
+    margin-bottom: -8px;
 }
 
 /* Meat and Veg icon size */
@@ -38,3 +44,18 @@
     margin-right: 20px;
 }
 
+.pizza-list-header:{
+    margin-top: 0px;
+}
+
+/* Changes to defaults--------------------------------------------------*/
+
+h5,
+h4,
+h3,
+h2,
+h1 {
+    padding: 20px;
+    color: white;
+    background-color: #65A5D1;
+}
