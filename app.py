@@ -95,6 +95,30 @@ def insert_veg_topping(veg_id):
         upsert=True)
     return redirect(url_for('get_pizzas'))
                         
+@app.route('/edit_pizza/<pizza_id>')
+def edit_pizza(pizza_id):
+    the_pizza =  mongo.db.pizzas.find_one({"_id": ObjectId(pizza_id)})
+    return render_template('editpizza.html', 
+                            pizza = the_pizza,
+                            sauces = sauces,
+                            cheeses=cheeses,
+                            meats = meats,
+                            vegs = vegs)
+
+@app.route('/update_pizza/<pizza_id>', methods=["POST"])
+def update_pizza(pizza_id):
+    pizzas = mongo.db.pizzas
+    pizzas.update( {'_id': ObjectId(pizza_id)},
+    {
+        'pizza_name' : request.form.get('pizza_name'),
+	    'pizza_code' : request.form.get('pizza_code'),
+    	'sauce_type' : request.form.get('sauce_type'),
+	    'cheese_type' : request.form.get('cheese_type'),
+	    # So you can build your data struture
+	    # as you wish but also make it as complex as you need it
+    	'toppings' : request.form.getlist('toppings'), # This would embed an array into your dict..
+    })
+    return redirect(url_for('get_pizzas'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
