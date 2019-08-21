@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <h3>Add Meat Topping</h3>
+    <form action="{{ url_for('insert_meat_topping', meat_id=meats._id) }}" method="POST" class="col s12">
+        <div class="row box">
+            <!-- Allows user to enter a name for the pizza -->
+            <div class="input-field col s12">
+                <i class="material-icons prefix">create</i>
+                <input id="meat_entry" name="meats" type="text" required>
+                <label for="meats">Meat Topping Name</label>
+            </div>
+            <!-- Button to submit form -->
+            <div class="row box">
+                <button class="btn waves-effect waves-light" type="submit">Add Topping
+                <i class="material-icons right">playlist_add</i>
+             </button>
+            </div>
+    </form>
+    </div>
+</div>
+{% endblock %}

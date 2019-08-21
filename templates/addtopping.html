@@ -1,0 +1,9 @@
+{% extends 'base.html'%} {% block content %}
+<h3>Add Topping</h3>
+    <div class="row">
+        <a href="{{url_for('add_meat', meat_id=meats._id)}}" class="waves-effect waves-light btn btn_small">Add Meat</a>
+    </div>
+    <div class="row">
+        <a href="{{url_for('add_veg', veg_id=vegs._id)}}" class="waves-effect waves-light btn btn_small">Add Veg</a>
+    </div>
+{% endblock %}
