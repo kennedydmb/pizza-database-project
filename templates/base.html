@@ -15,9 +15,13 @@
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="{{url_for('get_pizzas')}}"><i class="fas fa-pizza-slice"></i></a></li>
+                    <li><a href="{{url_for('add_pizza')}}">Add Pizza</a></li>
+                    <li><a href="{{url_for('add_topping')}}">Add Topping</a></li>
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
-                    <li><a href="{{url_for('get_pizzas')}}">Home</a></li>
+                    <li><a href="{{url_for('get_pizzas')}}">Pizza List</a></a></li>
+                    <li><a href="{{url_for('add_pizza')}}">Add Pizza</a></li>
+                    <li><a href="{{url_for('add_topping')}}">Add Topping</a></li>
             </div>
         </nav>
     </header>
