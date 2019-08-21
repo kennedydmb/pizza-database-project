@@ -22,21 +22,21 @@ ingredients = mongo.db.ingredients.find()
 @app.route('/get_pizzas')
 def get_pizzas():
     return render_template("pizzas.html",
-                           pizzas=mongo.db.pizzas.find(), 
-                           meats = meats,
-                           vegs = vegs,
-                           sauces = sauces,
-                           cheeses = cheeses)
+    pizzas=mongo.db.pizzas.find(), 
+    meats = mongo.db.ingredients.find_one({'meats' : {'$exists': True}}),
+    vegs = mongo.db.ingredients.find_one({'vegs' : {'$exists': True}}),
+    sauces = mongo.db.sauces.find_one({'sauces' : {'$exists': True}}),
+    cheeses = mongo.db.cheeses.find_one({'cheeses' : {'$exists': True}}))
 
 # Route for adding new pizzas to the database. Local dicts passed though.
 # User can choose pizza ingredients and add aadditional notes here.
 @app.route('/add_pizza')
 def add_pizza():
     return render_template("addpizza.html", 
-                           meats = meats,
-                           vegs = vegs,
-                           sauces = sauces,
-                           cheeses = cheeses)
+    meats = mongo.db.ingredients.find_one({'meats' : {'$exists': True}}),
+    vegs = mongo.db.ingredients.find_one({'vegs' : {'$exists': True}}),
+    sauces = mongo.db.sauces.find_one({'sauces' : {'$exists': True}}),
+    cheeses = mongo.db.cheeses.find_one({'cheeses' : {'$exists': True}}))
                          
 # Route for posting form created in addpizza.html                           
 @app.route('/insert_pizza', methods=['POST'])
