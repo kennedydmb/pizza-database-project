@@ -13,20 +13,23 @@
                 </li>
                 {% for topping in pizza.toppings %}
                     {% for veg in vegs.vegs %} 
-                        {% if veg == topping %}
+                        {% if veg|lower == topping|lower %}
                             <li class="collection-item">
                                 <i class="veg tiny material-icons">brightness_1</i>{{topping.capitalize()}}
                             </li>
                         {% endif %}
                     {% endfor %} 
                     {% for meat in meats.meats %}
-                        {% if meat == topping %}
+                        {% if meat|lower == topping|lower %}
                             <li class="collection-item">
                                 <i class="meat tiny material-icons">brightness_1</i>{{topping.capitalize()}}
                             </li>
                         {% endif %} 
                     {% endfor %}
                 {% endfor %}
+                <li>
+                    <a href="{{url_for('edit_pizza', pizza_id=pizza._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
+                </li>
             </ul>
         </div>
         {% endfor %}
