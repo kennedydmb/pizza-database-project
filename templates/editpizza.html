@@ -1,0 +1,94 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <form action="{{ url_for('update_pizza', pizza_id=pizza._id) }}" method="POST" class="col s12">
+        <div class="row box">
+            <h3>Edit Pizza</h3>
+            <!-- Pulls list of available sauces from DB and allows user to choose from them -->
+            <div class="input-field col s12">
+                <i class="prefix"><i class="fas fa-water"></i></i>
+                <select id="sauce_type" name="sauce_type">
+                  <option value="{{pizza.sauce_type|capitalize}}" selected>{{pizza.sauce_type|capitalize}}</option>
+                  {% for sauce in sauces.sauces %}
+                      <option value="{{sauce}}">{{sauce|capitalize}}</option>
+                  {% endfor %}
+                </select>
+            </div>
+            <!-- Allows user to enter a name for the pizza -->
+            <div class="input-field col s12">
+                <i class="material-icons prefix">create</i>
+                <input id="pizza_name" name="pizza_name" type="text" value="{{pizza.pizza_name|title}}" required>
+                <label for="icon_prefix">Pizza Name</label>
+            </div>
+            <!-- Allows user to enter a short code for the pizza -->
+            <div class="input-field col s12">
+                <i class="prefix"><i class="fas fa-code"></i></i>
+                <input id="pizza_code" name="pizza_code" type="text" value="{{pizza.pizza_code|upper}}" required minlength="2" maxlength="2">
+                <label for="icon_prefix">Pizza Code</label>
+            </div>
+            <!-- Displays list of available cheeses and allows user to choose from a list -->
+            <div class="input-field col s12">
+                <i class="prefix"><i class="fas fa-cheese"></i></i>
+                <select id="cheese_type" name="cheese_type">
+                  <option value="{{pizza.cheese_type|capitalize}}" selected>{{pizza.cheese_type|capitalize}}</option>
+                  {% for cheese in cheeses.cheeses %}
+                      <option value="{{cheese}}">{{cheese|capitalize}}</option>
+                  {% endfor %}
+                </select>
+                <label>Cheese Type</label>
+            </div>
+        </div>
+        <hr/>
+        <!-- Displays a checkbox field of all available toppings and allows user to choose pizza toppings -->
+        <!-- Displays all meat toppings -->
+        <div class="row box">
+                <h4><i class="fas fa-drumstick-bite topping-size-fix meat icon-space center-align"></i>Meat Toppings</h4>
+            {% for meat in meats.meats %}
+            
+            <p class="col s6">
+                <input type="checkbox" 
+                {% for topping in pizza.toppings %}
+                    {% if meat|lower == topping|lower %}
+                        checked = "checked"
+                    {% endif %}
+                {% endfor %}
+                id="topping_{{meat}}" value="{{meat}}" name="toppings">
+                <label for="topping_{{meat}}" class="label-fix"></label><span>{{meat|capitalize}}</span>
+            </p>
+            {% endfor %}
+            
+        </div>
+        <!-- Displays all veg toppings -->
+        <div class="row box">
+                <h4><i class="fas fa-carrot topping-size-fix veg icon-space"></i>Veg Toppings</h4>
+            {% for veg in vegs.vegs %}
+            <p class="col s6">
+                <input type="checkbox"
+                {% for topping in pizza.toppings %}
+                    {% if veg|lower == topping|lower %}
+                        checked = "checked"
+                    {% endif %}
+                {% endfor %}
+                id="topping_{{veg}}" value="{{veg}}" name="toppings">
+                <label for="topping_{{veg}}" class="label-fix"></label><span>{{veg|capitalize}}</span>
+            </p>
+            {% endfor %}
+        </div>
+        <!-- Allows user to add any additional details for the pizza -->
+        <div class="row box">
+            <h4>Additional Notes</h4>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">subject</i>
+                <textarea name="pizza_description" id="pizza_description" class="materialize-textarea"></textarea>
+                <label for="icon_telephone">Pizza Notes</label>
+            </div>
+        </div>
+        <!-- Button to submit form -->
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit">Add Pizza
+                <i class="material-icons right">playlist_add</i>
+             </button>
+        </div>
+    </form>
+</div>
+</div>
+{% endblock %}
