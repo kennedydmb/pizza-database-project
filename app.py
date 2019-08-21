@@ -12,8 +12,9 @@ mongo = PyMongo(app)
 # Make local dictionaries for database values
 meats = mongo.db.ingredients.find_one({'meats' : {'$exists': True}})
 vegs = mongo.db.ingredients.find_one({'vegs' : {'$exists': True}})
-sauces = mongo.db.ingredients.find_one({'sauces' : {'$exists': True}})
-cheeses = mongo.db.ingredients.find_one({'cheeses' : {'$exists': True}})
+sauces = mongo.db.sauces.find_one({'sauces' : {'$exists': True}})
+cheeses = mongo.db.cheeses.find_one({'cheeses' : {'$exists': True}})
+ingredients = mongo.db.ingredients.find()
                             
 @app.route('/')
 # Route for pizzas.html, local dicts passed through. This page displays pizzas 
@@ -53,9 +54,47 @@ def insert_pizza():
     mongo.db.pizzas.insert_one(complex)
     return redirect(url_for('get_pizzas'))
 
+
+
+@app.route('/get_toppings')
+def get_toppings():
+    return render_template('toppings.html',
+                           meats = meats,
+                           vegs = vegs)
+
 @app.route('/add_topping')
 def add_topping():
-    return render_template('addtopping.html')
+    return render_template('addtopping.html',
+    meats = meats,
+    vegs = vegs)
+
+
+@app.route('/add_meat')
+def add_meat():
+    return render_template("addmeat.html", 
+                           meats = meats)
+                           
+@app.route('/insert_meat_topping/<meat_id>', methods=['POST'])
+def insert_meat_topping(meat_id):
+    mongo.db.ingredients.update(
+        {'_id': ObjectId(meat_id)},
+        {'$addToSet':{'meats' : request.form.get('meats')}},
+        upsert=True)
+    return redirect(url_for('get_pizzas'))
+    
+@app.route('/add_veg')
+def add_veg():
+    return render_template("addveg.html", 
+                           vegs = vegs)
+                           
+@app.route('/insert_veg_topping/<veg_id>', methods=['POST'])
+def insert_veg_topping(veg_id):
+    mongo.db.ingredients.update(
+        {'_id': ObjectId(veg_id)},
+        {'$addToSet':{'vegs' : request.form.get('vegs')}},
+        upsert=True)
+    return redirect(url_for('get_pizzas'))
+                        
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
