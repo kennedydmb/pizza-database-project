@@ -41,34 +41,22 @@
         <!-- Displays a checkbox field of all available toppings and allows user to choose pizza toppings -->
         <!-- Displays all meat toppings -->
         <div class="row box">
-                <h4><i class="fas fa-drumstick-bite topping-size-fix meat icon-space center-align"></i>Meat Toppings</h4>
+            <h4><i class="fas fa-drumstick-bite topping-size-fix meat icon-space center-align"></i>Meat Toppings</h4>
             {% for meat in meats.meats %}
-            
+
             <p class="col s6">
-                <input type="checkbox" 
-                {% for topping in pizza.toppings %}
-                    {% if meat|lower == topping|lower %}
-                        checked = "checked"
-                    {% endif %}
-                {% endfor %}
-                id="topping_{{meat}}" value="{{meat}}" name="toppings">
+                <input type="checkbox" {% for topping in pizza.toppings %} {% if meat|lower==topping|lower %} checked="checked" {% endif %} {% endfor %} id="topping_{{meat}}" value="{{meat}}" name="toppings">
                 <label for="topping_{{meat}}" class="label-fix"></label><span>{{meat|capitalize}}</span>
             </p>
             {% endfor %}
-            
+
         </div>
         <!-- Displays all veg toppings -->
         <div class="row box">
-                <h4><i class="fas fa-carrot topping-size-fix veg icon-space"></i>Veg Toppings</h4>
+            <h4><i class="fas fa-carrot topping-size-fix veg icon-space"></i>Veg Toppings</h4>
             {% for veg in vegs.vegs %}
             <p class="col s6">
-                <input type="checkbox"
-                {% for topping in pizza.toppings %}
-                    {% if veg|lower == topping|lower %}
-                        checked = "checked"
-                    {% endif %}
-                {% endfor %}
-                id="topping_{{veg}}" value="{{veg}}" name="toppings">
+                <input type="checkbox" {% for topping in pizza.toppings %} {% if veg|lower==topping|lower %} checked="checked" {% endif %} {% endfor %} id="topping_{{veg}}" value="{{veg}}" name="toppings">
                 <label for="topping_{{veg}}" class="label-fix"></label><span>{{veg|capitalize}}</span>
             </p>
             {% endfor %}
@@ -84,9 +72,12 @@
         </div>
         <!-- Button to submit form -->
         <div class="row">
-            <button class="btn waves-effect waves-light" type="submit">Add Pizza
-                <i class="material-icons right">playlist_add</i>
-             </button>
+            <button class="btn waves-effect waves-light" type="submit">Update Pizza
+                <i class="material-icons right">autorenew</i>
+            </button>
+            <a href="{{url_for('delete_pizza', pizza_id=pizza._id)}}" class="waves-effect waves-light btn btn_small red">Delete Pizza
+                <i class="material-icons right">cancel</i>
+            </a>
         </div>
     </form>
 </div>
