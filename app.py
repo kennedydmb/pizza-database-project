@@ -120,6 +120,22 @@ def update_pizza(pizza_id):
     })
     return redirect(url_for('get_pizzas'))
 
+@app.route('/delete_task/<pizza_id>')
+def delete_pizza(pizza_id):
+    mongo.db.pizzas.remove({'_id': ObjectId(pizza_id)})
+    return redirect(url_for('get_pizzas'))
+
+@app.route('/')
+# Route for pizzas.html, local dicts passed through. This page displays pizzas 
+# currently in the system.
+@app.route('/get_toppings')
+def get_toppiings():
+    return render_template("toppings.html",
+    meats = mongo.db.ingredients.find_one({'meats' : {'$exists': True}}),
+    vegs = mongo.db.ingredients.find_one({'vegs' : {'$exists': True}}),
+    sauces = mongo.db.sauces.find_one({'sauces' : {'$exists': True}}),
+    cheeses = mongo.db.cheeses.find_one({'cheeses' : {'$exists': True}}))
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
