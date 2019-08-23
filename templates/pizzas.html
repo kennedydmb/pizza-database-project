@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row ">
         {% for pizza in pizzas %}
-        <div class="card card-img">
+        <div class="card">
             <ul class="collection">
                     <h4 class="">{{ pizza.pizza_name.title() }} - ({{pizza.pizza_code|upper}})</h4>
                 <li class="collection-item">
@@ -15,14 +15,16 @@
                     {% for veg in vegs.vegs %} 
                         {% if veg|lower == topping|lower %}
                             <li class="collection-item">
-                                <i class="veg tiny material-icons">brightness_1</i>{{topping.capitalize()}}
+                                <i class="veg tiny material-icons">brightness_1</i>
+                                <span>{{topping.capitalize()}}</span>
                             </li>
                         {% endif %}
                     {% endfor %} 
                     {% for meat in meats.meats %}
                         {% if meat|lower == topping|lower %}
                             <li class="collection-item">
-                                <i class="meat tiny material-icons">brightness_1</i>{{topping.capitalize()}}
+                                <i class="meat tiny material-icons">brightness_1</i>
+                                <span>{{topping.capitalize()}}</span>
                             </li>
                         {% endif %} 
                     {% endfor %}
@@ -32,7 +34,7 @@
                         Notes: {{pizza.pizza_notes}}
                     </p>
                 </li>
-                <li>
+                <li class="collection-item">
                     <a href="{{url_for('edit_pizza', pizza_id=pizza._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
                 </li>
             </ul>
