@@ -23,7 +23,7 @@
 }
 
 .red {
-    
+    color:red;
 }
 
 /* Fixes -------------------------------------------------------------------- */
@@ -46,6 +46,10 @@
 
 .pizza-list-header:{
     margin-top: 0px;
+}
+
+.align-right {
+    text-align: right;
 }
 
 /* Changes to defaults--------------------------------------------------*/
