@@ -2,9 +2,9 @@
 <div class="container">
     <div class="row ">
         {% for pizza in pizzas %}
-        <div class="card">
-            <ul class="collection pizza-list-header">
-                    <h4>{{ pizza.pizza_name.title() }}</h4>
+        <div class="card card-img">
+            <ul class="collection">
+                    <h4 class="">{{ pizza.pizza_name.title() }} - ({{pizza.pizza_code|upper}})</h4>
                 <li class="collection-item">
                     <i class="sauce tiny material-icons">brightness_1</i>{{pizza.sauce_type|title}}
                 </li>
@@ -27,6 +27,11 @@
                         {% endif %} 
                     {% endfor %}
                 {% endfor %}
+                <li class="collection-item">
+                    <p>
+                        Notes: {{pizza.pizza_notes}}
+                    </p>
+                </li>
                 <li>
                     <a href="{{url_for('edit_pizza', pizza_id=pizza._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
                 </li>
