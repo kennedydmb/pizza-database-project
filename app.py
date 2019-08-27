@@ -162,6 +162,7 @@ def user_auth():
         if check_password_hash(user_in_db['password'], form['user_password']):
             # Log user in (add to session)
             session['user'] = form['username']
+            return redirect(url_for('get_pizzas'))
         else:
             flash("Wrong password or user name!")
             return redirect(url_for('login'))
