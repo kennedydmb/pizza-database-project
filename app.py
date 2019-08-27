@@ -131,7 +131,7 @@ def delete_pizza(pizza_id):
 
 # Taken and modified from Miroslav Svec's (username Miro) sessions from Slack DCD channel
 # Login - taken and modified from Miroslav Svec's (username Miro) sessions from Slack DCD channel
-@app.route('/login', methods=['GET'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     """
     Logs the user into the website. 
