@@ -72,7 +72,7 @@ body {
     font-weight: 800;
 }
 
-btn-fix {
+.btn-fix {
     position: absolute;
     right: 0px;
     bottom: 12px;
