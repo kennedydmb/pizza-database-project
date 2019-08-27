@@ -148,7 +148,7 @@ def login():
         # Render the page for user to be able to log in
         return render_template("login.html")
         
-@app.route('/user_auth', methods=['POST'])
+@app.route('/user_auth', methods=['GET','POST'])
 def user_auth():
     """
     Checks user login details from login form
