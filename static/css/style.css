@@ -8,8 +8,8 @@
 
 /* Colors ------------------------------------------------------------------- */
 
-body{
-    background-image: linear-gradient(to bottom right, #24577B, #3E94D1); 
+body {
+    background-image: linear-gradient(to bottom right, #24577B, #3E94D1);
 }
 
 .meat {
@@ -64,13 +64,26 @@ body{
     margin-bottom: -5px;
 }
 
+.nav .brand-logo i {
+    float: none;
+}
+
+.topping-weight {
+    font-weight: 800;
+}
+
+btn-fix {
+    position: absolute;
+    right: 0px;
+    bottom: 12px;
+}
+
 /* Changes to defaults--------------------------------------------------*/
 
 h4,
 h3,
 h2,
 h1 {
-    margin-top: 0px !important;
     margin-bottom: 0px !important;
     padding: 20px;
     color: white;
@@ -80,16 +93,18 @@ h1 {
 
 /* Images --------------------------------------------------------------------*/
 
-.collection{
+.collection {
     border: none !important;
+    overflow: unset !important;
 }
+
 .collection-item {
     background-color: rgba(0, 0, 0, 0.4) !important;
     border-bottom: none !important;
 }
 
 .card-img {
-    background-image: url("https://images.unsplash.com/photo-1562244812-e705a6b7d80f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+    background-image: url("/static/images/pizza-card-photo.jpg");
     background-position: top;
 }
 
@@ -98,4 +113,8 @@ h1 {
 p,
 span {
     font-family: nunito;
+}
+
+.card {
+    min-height: 550px;
 }
