@@ -3,10 +3,7 @@
     {% for pizza in pizzas %}
     <div class=" col s12 m6">
         <div class="card card-img">
-            <div class="topping-color">
-                
-                
-                <h4 class="">{{ pizza.pizza_name.title() }} - ({{pizza.pizza_code|upper}})</h4>
+            <div class="topping-color"><a href="{{url_for('edit_pizza', pizza_id=pizza._id)}}"><h4 class="">{{ pizza.pizza_name.title() }} - ({{pizza.pizza_code|upper}})</h4></a>
                 <div class="col s6 ">
                     <h5>Sauce</h5>
                     <i class="sauce tiny material-icons">brightness_1</i><span class="topping-space topping-weight">{{pizza.sauce_type|title}}</span>
@@ -44,18 +41,21 @@
                 </div>
                 <div class="col s12 ">
                     <p>
+                        Added By: {{ pizza.creator.username|title }}
+                    </p>
+                </div>
+                
+                <div class="col s12 ">
+                    <p>
                         Notes: {{pizza.pizza_notes}}
                     </p>
                 </div>
                 <div class="btn-fix col s12">
                     <a href="{{url_for('edit_pizza', pizza_id=pizza._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
                 </div>
-                
-                
             </div>
         </div>
     </div>
     {% endfor %}
-
 </div>
 {% endblock %}
