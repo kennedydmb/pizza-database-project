@@ -4,24 +4,37 @@
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" /><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 
-<body class="background-img">
+<body>
     <header>
         <nav>
             <div class="nav-wrapper center-align">
-                <a href="{{url_for('get_pizzas')}}" class="brand-logo ">Pizza Manager</a>
+                <a href="{{url_for('get_pizzas')}}" class="brand-logo center"><i class="fas fa-pizza-slice"></i> Pizza Manager</a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="{{url_for('get_pizzas')}}"><i class="fas fa-pizza-slice"></i></a></li>
-                    <li><a href="{{url_for('add_pizza')}}">Add Pizza</a></li>
-                    <li><a href="{{url_for('add_topping')}}">Add Topping</a></li>
+                <!--- If the User is signed in, they will see the below navbar links  --->
+                {% if session.user %}
+                <li><a href="{{url_for('get_pizzas')}}">Pizza List</a></li>
+                <li><a href="{{url_for('add_pizza')}}">Add Pizza</a></li>
+                <li><a href="{{url_for('add_topping')}}">Add Topping</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('logout')}}">Log Out</a></li>
+                
+                <!--- If the User is not signed in, they will see the below navbar links  --->
+                {% else %}
+                <!--- Login Link  --->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('login')}}">Login</a>
+                </li>
+                
+                <!--- Register Link  --->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('register')}}">Register</a>
+                </li>
+                {% endif %}
                 </ul>
-                <ul class="side-nav" id="mobile-demo">
-                    <li><a href="{{url_for('get_pizzas')}}">Pizza List</a></a></li>
-                    <li><a href="{{url_for('add_pizza')}}">Add Pizza</a></li>
-                    <li><a href="{{url_for('add_topping')}}">Add Topping</a></li>
             </div>
         </nav>
     </header>
@@ -36,6 +49,7 @@
             $('.collapsible').collapsible();
             $('select').material_select();
             $(".button-collapse").sideNav();
+            $('.sidenav').sidenav();
         });
     </script>
 </body>
