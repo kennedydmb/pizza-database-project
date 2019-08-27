@@ -45,6 +45,7 @@ def add_pizza():
 # Route for posting form created in addpizza.html                           
 @app.route('/insert_pizza', methods=['POST'])
 def insert_pizza():
+    user = users.find_one({"username": session['user']})
     pizzas=mongo.db.pizzas
     complex = {
 	'pizza_name' : request.form.get('pizza_name'),
@@ -55,7 +56,10 @@ def insert_pizza():
 	# So you can build your data struture
 	# as you wish but also make it as complex as you need it
 	'toppings' : request.form.getlist('toppings'), # This would embed an array into your dict..
-}
+	'creator' : {
+	    '_id' : user['_id'],
+	    'username' : user['username']}
+	}
     mongo.db.pizzas.insert_one(complex)
     return redirect(url_for('get_pizzas'))
 
