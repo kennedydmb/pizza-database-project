@@ -41,7 +41,7 @@
         <!-- Displays a checkbox field of all available toppings and allows user to choose pizza toppings -->
         <!-- Displays all meat toppings -->
         <div class="row box">
-                <h4><i class="fas fa-drumstick-bite topping-size-fix meat icon-space center-align"></i>Meat Toppings</h4>
+            <h4><i class="fas fa-drumstick-bite topping-size-fix meat icon-space center-align"></i>Meat Toppings</h4>
             {% for meat in meats.meats %}
             <p class="col s6">
                 <input type="checkbox" id="topping_{{meat}}" value="{{meat}}" name="toppings">
@@ -51,13 +51,15 @@
         </div>
         <!-- Displays all veg toppings -->
         <div class="row box">
-                <h4><i class="fas fa-carrot topping-size-fix veg icon-space"></i>Veg Toppings</h4>
+            <h4><i class="fas fa-carrot topping-size-fix veg icon-space"></i>Veg Toppings</h4>
             {% for veg in vegs.vegs %}
             <p class="col s6">
                 <input type="checkbox" id="topping_{{veg}}" value="{{veg}}" name="toppings">
                 <label for="topping_{{veg}}" class="label-fix"></label><span>{{veg|capitalize}}</span>
             </p>
             {% endfor %}
+            <div>
+            </div>
         </div>
         <!-- Allows user to add any additional details for the pizza -->
         <div class="row box">
