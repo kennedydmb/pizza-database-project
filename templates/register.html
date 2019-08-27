@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+    <form "{{ url_for('register') }}" method="POST" class="col s12">
+        <div class="row box">
+            <h3>Create and account</h3>
+            <!-- Email Input Field -->
+            <div class="input-field col s12">
+                <label for="email">Enter Email</label>
+                <input name="email" type="email" id="email" placeholder="Email">
+                <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <!-- Username Input Field -->
+            <div class="input-field col s12">
+                <label for="username">Create Username</label>
+                <input name="username" type="text" id="sign-in-username" placeholder="Enter Username">
+                <small class="form-text form-info"><i class="fas fa-info-circle"></i> Make sure to pay attention to capitals as your Username AND Password will be case sensitive. Your Username will be the name that appears on your Profile Page and will be displayed as the Author when you create a recipe. </small>
+            </div>
+
+            <!-- Password Input Field -->
+            <div class="input-field col s12">
+                <label for="user_password">Create Password</label>
+                <input name="user_password" type="password" class="form-control" id="sign-in-password" placeholder="Enter Password">
+            </div>
+
+            <!-- Password Verification Input Field -->
+            <div class="input-field col s12">
+                <label for="user_password1">Confirm Password</label>
+                <input name="user_password1" type="password" class="form-control" id="sign-in-password1" placeholder="Confirm Password">
+            </div>
+
+            <!-- Register New User Submit Button -->
+            <button class="btn waves-effect waves-light" type="submit">Add Pizza</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
