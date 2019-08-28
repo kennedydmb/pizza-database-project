@@ -1,6 +1,7 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, session, flash
-from flask_pymongo import PyMongo
+import math
+from flask import Flask, render_template, redirect, request, url_for, session, flash, jsonify
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -25,8 +26,17 @@ users = mongo.db.users
 # currently in the system.
 @app.route('/get_pizzas')
 def get_pizzas():
+    page_limit = 6  # Logic for pagination
+    current_page = int(request.args.get('current_page', 1))
+    total = mongo.db.pizzas.count()
+    pages = range(1, int(math.ceil(total / page_limit)) + 1)
+    pizzas = mongo.db.pizzas.find().sort('_id', pymongo.DESCENDING).skip(
+        (current_page - 1)*page_limit).limit(page_limit)
+    
     return render_template("pizzas.html",
-    pizzas=mongo.db.pizzas.find(), 
+    pizzas=pizzas,
+    current_page=current_page,
+    pages=pages,
     meats = mongo.db.ingredients.find_one({'meats' : {'$exists': True}}),
     vegs = mongo.db.ingredients.find_one({'vegs' : {'$exists': True}}),
     sauces = mongo.db.sauces.find_one({'sauces' : {'$exists': True}}),
@@ -203,7 +213,6 @@ def register():
                 users.insert_one(
                     {
                         'username': form['username'],
-                        'email': form['email'],
                         'password': hash_pass,
                         'pizzas_created': []
                     }
