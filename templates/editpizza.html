@@ -45,22 +45,24 @@
             {% for meat in meats.meats %}
 
             <p class="col s6">
+                <label for="topping_{{meat}}" class="label-fix">
                 <input type="checkbox" {% for topping in pizza.toppings %} {% if meat|lower==topping|lower %} checked="checked" {% endif %} {% endfor %} id="topping_{{meat}}" value="{{meat}}" name="toppings">
-                <label for="topping_{{meat}}" class="label-fix"></label><span>{{meat|capitalize}}</span>
+                <span>{{meat|capitalize}}</span>
+                </label>
             </p>
             {% endfor %}
-        <div></div>
         </div>
         <!-- Displays all veg toppings -->
         <div class="row box">
             <h4><i class="fas fa-carrot topping-size-fix veg icon-space"></i>Veg Toppings</h4>
             {% for veg in vegs.vegs %}
             <p class="col s6">
+                <label for="topping_{{veg}}" class="label-fix">
                 <input type="checkbox" {% for topping in pizza.toppings %} {% if veg|lower==topping|lower %} checked="checked" {% endif %} {% endfor %} id="topping_{{veg}}" value="{{veg}}" name="toppings">
-                <label for="topping_{{veg}}" class="label-fix"></label><span>{{veg|capitalize}}</span>
+                <span>{{veg|capitalize}}</span>
+                </label>
             </p>
             {% endfor %}
-            <div></div>
         </div>
         <!-- Allows user to add any additional details for the pizza -->
         <div class="row box">
