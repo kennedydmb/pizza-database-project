@@ -7,7 +7,7 @@
             <div class="input-field col s12">
                 <i class="prefix"><i class="fas fa-water"></i></i>
                 <select id="sauce_type" name="sauce_type">
-                  <option value="" disabled selected>Choose Sauce</option>
+                  <option value="pizza" selected>Choose Sauce</option>
                   {% for sauce in sauces.sauces %}
                       <option value="{{sauce}}">{{sauce.capitalize()}}</option>
                   {% endfor %}
@@ -29,7 +29,7 @@
             <div class="input-field col s12">
                 <i class="prefix"><i class="fas fa-cheese"></i></i>
                 <select id="cheese_type" name="cheese_type">
-                  <option value="" disabled selected>Choose Cheese</option>
+                  <option value="mozzarella" selected>Mozzarella</option>
                   {% for cheese in cheeses.cheeses %}
                       <option value="{{cheese}}">{{cheese|capitalize}}</option>
                   {% endfor %}
@@ -44,24 +44,24 @@
             <h4><i class="fas fa-drumstick-bite topping-size-fix meat icon-space center-align"></i>Meat Toppings</h4>
             {% for meat in meats.meats %}
             <p class="col s6">
+                <label for="topping_{{meat}}" class="label-fix">
                 <input type="checkbox" id="topping_{{meat}}" value="{{meat}}" name="toppings">
-                <label for="topping_{{meat}}" class="label-fix"></label><span>{{meat|capitalize}}</span>
+                <span>{{meat|capitalize}}</span>
+                </label>
             </p>
             {% endfor %}
-            <div>
-            </div>
         </div>
         <!-- Displays all veg toppings -->
         <div class="row box">
             <h4><i class="fas fa-carrot topping-size-fix veg icon-space"></i>Veg Toppings</h4>
             {% for veg in vegs.vegs %}
             <p class="col s6">
-                <input type="checkbox" id="topping_{{veg}}" value="{{veg}}" name="toppings">
-                <label for="topping_{{veg}}" class="label-fix"></label><span>{{veg|capitalize}}</span>
+                <label for="topping_{{veg}}" class="label-fix">
+                <input type="checkbox" id="topping_{{veg}}" value="{{veg}}" name="toppings"/>
+                <span>{{veg|capitalize}}</span>
+                </label>
             </p>
             {% endfor %}
-            <div>
-            </div>
         </div>
         <!-- Allows user to add any additional details for the pizza -->
         <div class="row box">
