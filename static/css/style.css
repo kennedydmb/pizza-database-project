@@ -9,7 +9,7 @@
 /* Colors ------------------------------------------------------------------- */
 
 body {
-    background-image: linear-gradient(to bottom right, #24577B, #3E94D1);
+    background-color: #809FFF;
 }
 
 .meat {
@@ -32,12 +32,17 @@ body {
     color: white !important;
 }
 
+.light-white {
+    color: rgba(255, 255, 255, 0.57)
+}
+
 /* Fixes -------------------------------------------------------------------- */
 
 /* Fixes alignment of text with checkboxes*/
 
 .label-fix {
     margin-bottom: -8px;
+    color:black;
 }
 
 /* Meat and Veg icon size */
@@ -64,6 +69,10 @@ body {
     margin-bottom: -5px;
 }
 
+nav {
+    background-color: #000A27 !important;
+}
+
 .nav .brand-logo i {
     float: none;
 }
@@ -87,7 +96,7 @@ h1 {
     margin-bottom: 0px !important;
     padding: 20px;
     color: white;
-    background-color: #65A5D1;
+    background-color: #202840	;
     font-family: nunito;
 }
 
@@ -105,7 +114,7 @@ h1 {
 
 .card-img {
     background-image: url("/static/images/pizza-card-photo.jpg");
-    background-position: top;
+    background-position: right;
 }
 
 /* Text changes --------------------------------------------------------------*/
