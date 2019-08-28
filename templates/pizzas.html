@@ -3,17 +3,19 @@
     {% for pizza in pizzas %}
     <div class=" col s12 m6">
         <div class="card card-img">
-            <div class="topping-color"><a href="{{url_for('edit_pizza', pizza_id=pizza._id)}}"><h4 class="">{{ pizza.pizza_name.title() }} - ({{pizza.pizza_code|upper}})</h4></a>
-                <div class="col s6 ">
-                    <h5>Sauce</h5>
-                    <i class="sauce tiny material-icons">brightness_1</i><span class="topping-space topping-weight">{{pizza.sauce_type|title}}</span>
-                </div>
-                <div class="col s6 ">
-                    <h5>Cheese</h5>
-                    <i class="cheese tiny material-icons">brightness_1</i><span class="topping-space topping-weight">{{pizza.cheese_type.capitalize()}}</span>
-                </div>
+            <div class="topping-color">
+                <a href="{{url_for('edit_pizza', pizza_id=pizza._id)}}">
+                    <h4 class="">{{ pizza.pizza_name.title() }} - ({{pizza.pizza_code|upper}})</h4>
+                </a>
                 <div class="col s12 ">
-                    <h5>Toppings</h5>
+                    <h5 class="center-align">Toppings</h5>
+                    <hr/>
+                </div>
+                <div class="col s6">
+                    <i class="cheese tiny material-icons">brightness_1</i><span class="topping-space topping-weight">{{pizza.cheese_type.capitalize()}} Cheese</span>
+                </div>
+                <div class="col s6">
+                    <i class="sauce tiny material-icons">brightness_1</i><span class="topping-space topping-weight">{{pizza.sauce_type|title}} Sauce</span>
                 </div>
                 <div class="col s6 ">
                     {% for topping in pizza.toppings %} {% for veg in vegs.vegs %}
@@ -40,12 +42,14 @@
                     {% endfor %} {% endfor %}
                 </div>
                 <div class="col s12 ">
+                    <hr/>
                     <p>
                         Added By: {{ pizza.creator.username|title }}
                     </p>
                 </div>
-                
+
                 <div class="col s12 ">
+                    <hr/>
                     <p>
                         Notes: {{pizza.pizza_notes}}
                     </p>
@@ -57,5 +61,14 @@
         </div>
     </div>
     {% endfor %}
+    <div class="row col s12">
+        <ul class="pagination">
+            {% for page_number in pages %} {% if page_number == current_page %}
+            <li class="active"><a>{{ page_number }}</a></li>
+            {% else %}
+            <li class="waves-effect"><a href="{{ url_for('get_pizzas', current_page=page_number) }}">{{ page_number }}</a></li>
+            {% endif %} {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endblock %}
