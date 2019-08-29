@@ -70,7 +70,7 @@
             <h4>Additional Notes</h4>
             <div class="input-field col s12">
                 <i class="material-icons prefix">subject</i>
-                <input id="pizza_code" name="pizza_code" type="text" value="{{pizza.pizza_notes}}" required minlength="2" maxlength="2">
+                <input id="pizza_notes" name="pizza_notes" type="text" value="{{pizza.pizza_notes}}" required maxlength="100">
                 <label for="icon_prefix">Pizza Notes</label>
             </div>
         </div>
@@ -79,10 +79,16 @@
             <button class="btn waves-effect waves-light" type="submit">Update Pizza
                 <i class="material-icons right">autorenew</i>
             </button>
+            <a href="{{url_for('get_pizzas')}}" class="waves-effect waves-light btn">Go Back
+                <i class="material-icons right">arrow_back</i>
+            </a>
+        </div>
+        <div class="row">
             <a href="{{url_for('delete_pizza', pizza_id=pizza._id)}}" class="waves-effect waves-light btn btn_small red">Delete Pizza
                 <i class="material-icons right">cancel</i>
             </a>
         </div>
+
     </form>
 </div>
 </div>
