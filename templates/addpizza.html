@@ -3,6 +3,7 @@
     <form action="{{ url_for('insert_pizza') }}" method="POST" class="col s12">
         <div class="row box">
             <h3>Add Pizza</h3>
+
             <!-- Pulls list of available sauces from DB and allows user to choose from them -->
             <div class="input-field col s12">
                 <i class="prefix"><i class="fas fa-water"></i></i>
@@ -13,18 +14,21 @@
                   {% endfor %}
                 </select>
             </div>
+
             <!-- Allows user to enter a name for the pizza -->
             <div class="input-field col s12">
                 <i class="material-icons prefix">create</i>
                 <input id="pizza_name" name="pizza_name" type="text" required>
                 <label for="icon_prefix">Pizza Name</label>
             </div>
+
             <!-- Allows user to enter a short code for the pizza -->
             <div class="input-field col s12">
                 <i class="prefix"><i class="fas fa-code"></i></i>
                 <input id="pizza_code" name="pizza_code" type="text" minlength="2" maxlength="2" required>
                 <label for="icon_prefix">Pizza Code (2 Letters)</label>
             </div>
+
             <!-- Displays list of available cheeses and allows user to choose from a list -->
             <div class="input-field col s12">
                 <i class="prefix"><i class="fas fa-cheese"></i></i>
@@ -38,6 +42,7 @@
             </div>
         </div>
         <hr/>
+
         <!-- Displays a checkbox field of all available toppings and allows user to choose pizza toppings -->
         <!-- Displays all meat toppings -->
         <div class="row box">
@@ -52,6 +57,7 @@
             </p>
             {% endfor %}
         </div>
+
         <!-- Displays all veg toppings -->
         <div class="row box">
             <h4><i class="fas fa-carrot topping-size-fix veg icon-space"></i>Veg Toppings</h4>
@@ -65,6 +71,7 @@
             </p>
             {% endfor %}
         </div>
+
         <!-- Allows user to add any additional details for the pizza -->
         <div class="row box">
             <h4>Additional Notes</h4>
@@ -74,6 +81,7 @@
                 <label for="icon_telephone">Pizza Notes</label>
             </div>
         </div>
+
         <!-- Button to submit form -->
         <div class="row">
             <button class="btn waves-effect waves-light" type="submit">Add Pizza
@@ -84,6 +92,5 @@
             </a>
         </div>
     </form>
-</div>
 </div>
 {% endblock %}
