@@ -67,9 +67,9 @@
     <div class="row col s12">
         <ul class="pagination">
             {% for page_number in pages %} {% if page_number == current_page %}
-            <li class="active"><a>{{ page_number }}</a></li>
+            <li class="active cyan"><a>{{ page_number }}</a></li>
             {% else %}
-            <li class="waves-effect"><a href="{{ url_for('get_pizzas', current_page=page_number) }}">{{ page_number }}</a></li>
+            <li class="waves-effect cyan"><a href="{{ url_for('get_pizzas', current_page=page_number) }}">{{ page_number }}</a></li>
             {% endif %} {% endfor %}
         </ul>
     </div>
