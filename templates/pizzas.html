@@ -1,23 +1,34 @@
 {% extends 'base.html'%} {% block content %}
 <div class="row">
+    <!-- Starts a new card for each pizza -->
     {% for pizza in pizzas %}
     <div class=" col s12 m6">
         <div class="card card-img">
             <div class="topping-color text-shadow">
                 <div class="pizza-box">
+
+                    <!-- Name of the pizza and the pizza code -->
                     <a href="{{url_for('edit_pizza', pizza_id=pizza._id)}}">
                         <h4 class="small-screen-header">{{ pizza.pizza_name.title() }} - ({{pizza.pizza_code|upper}})</h4>
                     </a>
+
+                    <!-- Begining of toppings list -->
                     <div class="col s12 ">
                         <h5 class="center-align">Toppings</h5>
                         <hr/>
                     </div>
+
+                    <!-- Type of cheese on pizza -->
                     <div class="col s6">
                         <i class="cheese tiny material-icons">brightness_1</i><span class="topping-space topping-weight">{{pizza.cheese_type.capitalize()}}</span>
                     </div>
+
+                    <!-- Type of sauce on pizza -->
                     <div class="col s6">
                         <i class="sauce tiny material-icons">brightness_1</i><span class="topping-space topping-weight">{{pizza.sauce_type|title}} Sauce</span>
                     </div>
+
+                    <!-- Loops through each topping in the pizza and checks to see if it is a veg -->
                     <div class="col s6 ">
                         {% for topping in pizza.toppings %} {% for veg in vegs.vegs %}
                         <ul>
@@ -30,6 +41,8 @@
                         </ul>
                         {% endfor %} {% endfor %}
                     </div>
+
+                    <!-- Loops through each topping in the pizza and checks to see if it is a meat -->
                     <div class="col s6 ">
                         {% for topping in pizza.toppings %} {% for meat in meats.meats %}
                         <ul>
@@ -43,12 +56,16 @@
                         {% endfor %} {% endfor %}
                     </div>
                 </div>
+
+                <!-- Shows who the pizza was added by -->
                 <div class="col s12 text-shadow">
                     <hr/>
                     <p>
                         Added By: {{ pizza.creator.username|title }}
                     </p>
                 </div>
+
+                <!-- Shows any notes made about the pizza -->
                 <div class="col s12">
                     <hr/>
                     <div class="notes-box text-shadow">
@@ -57,6 +74,8 @@
                         </p>
                     </div>
                 </div>
+
+                <!-- Edit button to edit pizza -->
                 <div class="col s12">
                     <a href="{{url_for('edit_pizza', pizza_id=pizza._id)}}" class="waves-effect waves-light btn btn-small blue">Edit</a>
                 </div>
@@ -64,6 +83,8 @@
         </div>
     </div>
     {% endfor %}
+
+    <!-- Page numbers -->
     <div class="row col s12">
         <ul class="pagination">
             {% for page_number in pages %} {% if page_number == current_page %}
@@ -73,10 +94,12 @@
             {% endif %} {% endfor %}
         </ul>
     </div>
+
+    <!-- Fixed action button for adding new pizza on medium and down devices -->
     <div class="fixed-action-btn">
         <a href="{{url_for('add_pizza')}}" class="btn-floating btn-large cyan hide-on-large-and-up">
-    <i class="large material-icons">mode_edit</i>
-  </a>
+            <i class="large material-icons">mode_edit</i>
+        </a>
     </div>
 </div>
 {% endblock %}
