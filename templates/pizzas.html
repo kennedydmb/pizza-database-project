@@ -12,7 +12,7 @@
                     <hr/>
                 </div>
                 <div class="col s6">
-                    <i class="cheese tiny material-icons">brightness_1</i><span class="topping-space topping-weight">{{pizza.cheese_type.capitalize()}} Cheese</span>
+                    <i class="cheese tiny material-icons">brightness_1</i><span class="topping-space topping-weight">{{pizza.cheese_type.capitalize()}}</span>
                 </div>
                 <div class="col s6">
                     <i class="sauce tiny material-icons">brightness_1</i><span class="topping-space topping-weight">{{pizza.sauce_type|title}} Sauce</span>
@@ -54,8 +54,8 @@
                         Notes: {{pizza.pizza_notes}}
                     </p>
                 </div>
-                <div class="btn-fix col s12">
-                    <a href="{{url_for('edit_pizza', pizza_id=pizza._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
+                <div class="col s12">
+                    <a href="{{url_for('edit_pizza', pizza_id=pizza._id)}}" class="waves-effect waves-light btn btn-small blue">Edit</a>
                 </div>
             </div>
         </div>

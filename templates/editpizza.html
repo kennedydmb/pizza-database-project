@@ -42,11 +42,11 @@
         <!-- Displays all meat toppings -->
         <div class="row box">
             <h4><i class="fas fa-drumstick-bite topping-size-fix meat icon-space center-align"></i>Meat Toppings</h4>
+            <p class="col s12"><b>Limit of 5 toppings.</b></p>
             {% for meat in meats.meats %}
-
             <p class="col s6">
                 <label for="topping_{{meat}}" class="label-fix">
-                <input type="checkbox" {% for topping in pizza.toppings %} {% if meat|lower==topping|lower %} checked="checked" {% endif %} {% endfor %} id="topping_{{meat}}" value="{{meat}}" name="toppings">
+                <input type="checkbox" {% for topping in pizza.toppings %} {% if meat|lower==topping|lower %} checked="checked" {% endif %} {% endfor %} id="topping_{{meat}}" value="{{meat}}" class="meat-topping-picker" name="toppings">
                 <span>{{meat|capitalize}}</span>
                 </label>
             </p>
@@ -55,10 +55,11 @@
         <!-- Displays all veg toppings -->
         <div class="row box">
             <h4><i class="fas fa-carrot topping-size-fix veg icon-space"></i>Veg Toppings</h4>
+            <p class="col s12"><b>Limit of 5 toppings.</b></p>
             {% for veg in vegs.vegs %}
             <p class="col s6">
                 <label for="topping_{{veg}}" class="label-fix">
-                <input type="checkbox" {% for topping in pizza.toppings %} {% if veg|lower==topping|lower %} checked="checked" {% endif %} {% endfor %} id="topping_{{veg}}" value="{{veg}}" name="toppings">
+                <input type="checkbox" {% for topping in pizza.toppings %}  {% if veg|lower==topping|lower %} checked="checked" {% endif %} {% endfor %} id="topping_{{veg}}" value="{{veg}}" class="veg-topping-picker" name="toppings">
                 <span>{{veg|capitalize}}</span>
                 </label>
             </p>
@@ -69,8 +70,8 @@
             <h4>Additional Notes</h4>
             <div class="input-field col s12">
                 <i class="material-icons prefix">subject</i>
-                <textarea name="pizza_notes" id="pizza_notes" class="materialize-textarea"></textarea>
-                <label for="icon_telephone">Pizza Notes</label>
+                <input id="pizza_code" name="pizza_code" type="text" value="{{pizza.pizza_notes}}" required minlength="2" maxlength="2">
+                <label for="icon_prefix">Pizza Notes</label>
             </div>
         </div>
         <!-- Button to submit form -->
