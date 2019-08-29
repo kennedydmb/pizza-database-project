@@ -127,6 +127,7 @@ def edit_pizza(pizza_id):
 @app.route('/update_pizza/<pizza_id>', methods=["POST"])
 def update_pizza(pizza_id):
     pizzas = mongo.db.pizzas
+    user = users.find_one({"username": session['user']})
     pizzas.update( {'_id': ObjectId(pizza_id)},
     {
         'pizza_name' : request.form.get('pizza_name'),
@@ -134,8 +135,11 @@ def update_pizza(pizza_id):
     	'sauce_type' : request.form.get('sauce_type'),
 	    'cheese_type' : request.form.get('cheese_type'),
 	    'pizza_notes' : request.form.get('pizza_notes'),
-	    'toppings' : request.form.getlist('toppings')}
-	    )
+	    'toppings' : request.form.getlist('toppings'),
+	    'creator' : {
+	    '_id' : user['_id'],
+	    'username' : user['username']}
+        })
     return redirect(url_for('get_pizzas'))
 
 @app.route('/delete_task/<pizza_id>')
