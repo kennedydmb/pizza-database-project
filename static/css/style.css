@@ -10,11 +10,14 @@
 
 .card {
     min-height: 600px;
-    background-image: linear-gradient(to bottom, #202840, black) !important;
 }
 
 .pizza-box {
     min-height: 390px;
+}
+
+.text-shadow {
+    text-shadow: 0px 0px 10px #000000;
 }
 
 .add-topping-box {
