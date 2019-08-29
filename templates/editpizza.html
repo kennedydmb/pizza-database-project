@@ -83,13 +83,12 @@
                 <i class="material-icons right">arrow_back</i>
             </a>
         </div>
+        <!-- Button to delete pizza -->
         <div class="row">
             <a href="{{url_for('delete_pizza', pizza_id=pizza._id)}}" class="waves-effect waves-light btn btn_small red">Delete Pizza
                 <i class="material-icons right">cancel</i>
             </a>
         </div>
-
     </form>
-</div>
 </div>
 {% endblock %}
