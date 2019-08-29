@@ -4,30 +4,29 @@
     <form "{{ url_for('register') }}" method="POST" class="col s12">
         <div class="row box">
             <h3>Create an account</h3>
-            <!-- Username Input Field -->
+            <!-- Username input -->
             <div class="input-field col s12">
                 <small><i class="fas fa-info-circle"></i>Username must be between 6 and 20 characters long</small>
                 <label for="username">Create Username</label>
                 <input name="username" type="text" id="sign-in-username" placeholder="Enter Username" minlength="6" maxlength="20" required>
             </div>
 
-            <!-- Password Input Field -->
+            <!-- Password input -->
             <div class="input-field col s12">
                 <small><i class="fas fa-info-circle"></i>Password must be between 5 and 20 characters long</small>
                 <label for="user_password">Create Password</label>
                 <input name="user_password" type="password" class="form-control" id="sign-in-password" placeholder="Enter Password" minlength="5" maxlength="20" required>
             </div>
 
-            <!-- Password Verification Input Field -->
+            <!-- Password verification-->
             <div class="input-field col s12">
                 <label for="user_password1">Confirm Password</label>
                 <input name="user_password1" type="password" class="form-control" id="sign-in-password1" placeholder="Confirm Password" required>
             </div>
 
-            <!-- Register New User Submit Button -->
+            <!-- Confirm registration -->
             <button class="btn waves-effect waves-light" type="submit">Add Pizza</button>
         </div>
     </form>
 </div>
-
 {% endblock %}
