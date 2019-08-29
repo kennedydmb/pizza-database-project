@@ -19,6 +19,7 @@ sauces = mongo.db.sauces.find_one({'sauces' : {'$exists': True}})
 cheeses = mongo.db.cheeses.find_one({'cheeses' : {'$exists': True}})
 ingredients = mongo.db.ingredients.find()
 users = mongo.db.users
+pizzas = mongo.db.pizzas
 
                             
 @app.route('/')
@@ -250,6 +251,16 @@ def logout():
     session.clear()
     flash('You have been logged out!')
     return redirect(url_for('get_pizzas'))
+
+
+@app.route('/account/<user>')
+def account(user):
+    user_account = users.find({'username': user})
+    users_pizzas = pizzas.find({'creator.username': user})
+    return render_template('account.html',
+                            user = user,
+                            user_account = user_account,
+                            users_pizzas = users_pizzas)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
