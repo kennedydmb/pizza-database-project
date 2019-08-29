@@ -1,10 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700');
 
+/* Custom containers ---------------------------------------------------------*/
+
 .box {
     background-color: #eef0f5;
     border-radius: 3px;
     margin-bottom: 20px;
 }
+
+.card {
+    min-height: 550px;
+}
+
+.add-topping-box {
+    background-color: #eef0f5;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    min-height: 150px;
+}
+
+.add-height {
+    line-height: 150px;
+}
+
 
 /* Colors ------------------------------------------------------------------- */
 
@@ -32,8 +50,8 @@ body {
     color: white !important;
 }
 
-.light-white {
-    color: rgba(255, 255, 255, 0.57)
+.orange {
+    color: orange;
 }
 
 /* Fixes -------------------------------------------------------------------- */
@@ -42,7 +60,7 @@ body {
 
 .label-fix {
     margin-bottom: -8px;
-    color:black;
+    color: black;
 }
 
 /* Meat and Veg icon size */
@@ -96,7 +114,7 @@ h1 {
     margin-bottom: 0px !important;
     padding: 20px;
     color: white;
-    background-color: #202840	;
+    background-color: #202840;
     font-family: nunito;
 }
 
@@ -124,6 +142,3 @@ span {
     font-family: nunito;
 }
 
-.card {
-    min-height: 550px;
-}
