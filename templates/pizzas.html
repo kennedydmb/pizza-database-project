@@ -2,11 +2,11 @@
 <div class="row">
     {% for pizza in pizzas %}
     <div class=" col s12 m6">
-        <div class="card">
-            <div class="topping-color">
+        <div class="card card-img">
+            <div class="topping-color text-shadow">
                 <div class="pizza-box">
                     <a href="{{url_for('edit_pizza', pizza_id=pizza._id)}}">
-                        <h4 class="small-screen-header card-img">{{ pizza.pizza_name.title() }} - ({{pizza.pizza_code|upper}})</h4>
+                        <h4 class="small-screen-header">{{ pizza.pizza_name.title() }} - ({{pizza.pizza_code|upper}})</h4>
                     </a>
                     <div class="col s12 ">
                         <h5 class="center-align">Toppings</h5>
@@ -43,7 +43,7 @@
                         {% endfor %} {% endfor %}
                     </div>
                 </div>
-                <div class="col s12 ">
+                <div class="col s12 text-shadow">
                     <hr/>
                     <p>
                         Added By: {{ pizza.creator.username|title }}
@@ -51,7 +51,7 @@
                 </div>
                 <div class="col s12">
                     <hr/>
-                    <div class="notes-box">
+                    <div class="notes-box text-shadow">
                         <p>
                             Notes: {{pizza.pizza_notes}}
                         </p>
