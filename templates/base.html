@@ -2,52 +2,72 @@
 <html>
 
 <head>
+    <!-- Link to materialize icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Link to local css -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
+
+    <!-- Link to materialize css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Link to font awesome icons -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 
 <body>
     <header>
-        <nav>
-            <div class="nav-wrapper">
-                <a href="{{url_for('get_pizzas')}}" class="brand-logo center small-screen-header"><i class="fas fa-pizza-slice hide-on-med-and-down"></i> Pizza Manager</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <!--- If the User is signed in, they will see the below navbar links --->
-                    {% if session.user %}
-                    <li><a href="{{url_for('add_pizza')}}">Add Pizza</a></li>
-                    <li><a href="{{url_for('add_topping')}}">Add Topping</a></li>
-                    <li><a href="{{url_for('account', user=session.user)}}">My Account</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{url_for('logout')}}">Log Out</a></li>
-                    <!--- If the User is not signed in, they will see the below navbar links  --->
-                    {% else %}
-                    <!--- Login Link  --->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url_for('login')}}">Login</a>
-                    </li>
-                    <!--- Register Link  --->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url_for('register')}}">Register</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
+        <!-- Start of navbar -->
+        <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper">
+                    <!-- Pizza logo with link to home page -->
+                    <a href="{{url_for('get_pizzas')}}" class="brand-logo center small-screen-header"><i class="fas fa-pizza-slice hide-on-med-and-down"></i> Pizza Manager</a>
+
+                    <!-- Menu icon for mobile -->
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+                    <ul class="right hide-on-med-and-down">
+                        {% if session.user %}
+                        <!--- If user is signed in, they will see the below navbar links --->
+                        <li><a href="{{url_for('add_pizza')}}">Add Pizza</a></li>
+                        <li><a href="{{url_for('add_topping')}}">Add Topping</a></li>
+                        <li><a href="{{url_for('account', user=session.user)}}">My Account</a></li>
+                        <li><a href="{{url_for('logout')}}">Log Out</a></li>
+
+                        {% else %}
+                        <!--- If user is not signed in, they will see the below navbar links  -->
+                        <!--- Login --->
+                        <li>
+                            <a href="{{url_for('login')}}">Login</a>
+                        </li>
+
+                        <!--- Registration --->
+                        <li>
+                            <a href="{{url_for('register')}}">Register</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- End of nav -->
+
         <ul class="sidenav" id="mobile-demo">
-            <!--- If the User is signed in, they will see the below navbar links --->
             {% if session.user %}
+            <!--- If user is signed in, they will see the below navbar links --->
             <li><a href="{{url_for('add_pizza')}}">Add Pizza</a></li>
             <li><a href="{{url_for('add_topping')}}">Add Topping</a></li>
             <li><a href="{{url_for('account', user=session.user)}}">My Account</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('logout')}}">Log Out</a></li>
-            <!--- If the User is not signed in, they will see the below navbar links  --->
+
             {% else %}
+            <!--- If user is not signed in, they will see the below navbar links  -->
             <!--- Login Link  --->
             <li class="nav-item">
                 <a class="nav-link" href="{{url_for('login')}}">Login</a>
             </li>
+
             <!--- Register Link  --->
             <li class="nav-item">
                 <a class="nav-link" href="{{url_for('register')}}">Register</a>
@@ -55,24 +75,41 @@
             {% endif %}
         </ul>
     </header>
+
+    <!-- End of header and start of block content -->
     <div class="container">
         {% block content %} {% endblock %}
     </div>
+
+    <!-- JS for fontawesome -->
     <script src="https://kit.fontawesome.com/58e6a00841.js"></script>
+
+    <!-- JS for jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- JS for materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- JS script for materialize initialization and custom functions for checkboxes -->
     <script type="text/javascript">
+        // Functions for dropdown menu and sidenav
         $(document).ready(function() {
             $('.collapsible').collapsible();
             $('select').formSelect();
             $('.sidenav').sidenav();
+            // Code for the floating action button
+            $('.fixed-action-btn').floatingActionButton();
         });
+
+        // Code so that only 5 meat topping boxes can be ticked
         $('input[type=checkbox]').on('change', function(e) {
             if ($('input[class="meat-topping-picker"]:checked').length > 5) {
                 $(this).prop('checked', false);
                 alert("Max 5 meat toppings");
             }
         });
+
+        // Code so that only 5 veg toppings can be ticked
         $('input[type=checkbox]').on('change', function(e) {
             if ($('input[class="veg-topping-picker"]:checked').length > 5) {
                 $(this).prop('checked', false);
