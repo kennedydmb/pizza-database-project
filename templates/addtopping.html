@@ -1,9 +1,18 @@
 {% extends 'base.html'%} {% block content %}
-<h3>Add Topping</h3>
-    <div class="row">
-        <a href="{{url_for('add_meat', meat_id=meats._id)}}" class="waves-effect waves-light btn btn_small">Add Meat</a>
+
+<h3 class="center-align">Add Topping</h3>
+<div class="row add-topping-box">
+    <div class="col s12 m6 center-align add-height">
+        <a href="{{url_for('add_meat', meat_id=meats._id)}}" class="waves-effect waves-light btn btn-large ">Add Meat</a>
     </div>
-    <div class="row">
-        <a href="{{url_for('add_veg', veg_id=vegs._id)}}" class="waves-effect waves-light btn btn_small">Add Veg</a>
+    <div class="col s12 m6 center-align add-height">
+        <a href="{{url_for('add_veg', veg_id=vegs._id)}}" class="waves-effect waves-light btn btn-large">Add Veg</a>
     </div>
+</div>
+<div class="row col s12">
+    <a href="{{url_for('get_pizzas')}}" class="waves-effect waves-light btn btn-small">Go Back
+        <i class="material-icons right">arrow_back</i>
+    </a>
+</div>
+
 {% endblock %}
