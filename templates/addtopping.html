@@ -1,19 +1,23 @@
 {% extends 'base.html'%} {% block content %}
-
 <h3 class="center-align">Add Topping</h3>
+<!-- User has a choice of which type of topping to add -->
 <div class="row add-topping-box">
+    
+    <!-- Button to add meat -->
     <div class="col s12 m6 center-align add-height">
-        
         <a href="{{url_for('add_meat', meat_id=meats._id)}}" class="waves-effect waves-light btn btn-large "><i class="material-icons right">add</i>Add Meat</a>
     </div>
+    
+    <!-- Button to add veg -->
     <div class="col s12 m6 center-align add-height">
         <a href="{{url_for('add_veg', veg_id=vegs._id)}}" class="waves-effect waves-light btn btn-large"><i class="material-icons right">add</i>Add Veg</a>
     </div>
 </div>
+
+<!-- Button to go back to home -->
 <div class="row col s12">
     <a href="{{url_for('get_pizzas')}}" class="waves-effect waves-light btn btn-small">Go Back
         <i class="material-icons right">arrow_back</i>
     </a>
 </div>
-
 {% endblock %}
