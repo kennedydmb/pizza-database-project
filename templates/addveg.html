@@ -3,14 +3,19 @@
     <form action="{{ url_for('insert_veg_topping', veg_id=vegs._id) }}" method="POST" class="col s12">
         <div class="row box">
             <h3>Add Veg Topping</h3>
+            
             <!-- Allows user to enter a name for the topping -->
             <div class="input-field col s12">
                 <i class="material-icons prefix">create</i>
                 <input id="veg_entry" name="vegs" type="text" required minlength="4" maxlength="25">
                 <label for="vegs">Veg Topping Name</label>
+                
+                <!-- Submit topping button -->
                 <button class="btn waves-effect waves-light" type="submit">Add Topping
                     <i class="material-icons right">add</i>
-                 </button>
+                </button>
+                
+                <!-- Button to go back home --> 
                 <a href="{{url_for('add_topping')}}" class="waves-effect waves-light btn">Go Back
                     <i class="material-icons right">arrow_back</i>
                 </a>
