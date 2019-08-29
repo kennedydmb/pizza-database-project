@@ -1,20 +1,24 @@
 {% extends 'base.html' %} {% block content %}
-
 <div class="container">
     <form action="/user_auth" method="POST" class="col s12">
         <div class="row box">
             <h3>Login</h3>
+            
+            <!-- Username input -->
             <div class="input-field col s12">
                 <label for="username">Enter Username</label>
                 <input name="username" type="text" class="form-control" placeholder="Username" required>
             </div>
+            
+            <!-- Password input -->
             <div class="input-field col s12">
                 <label for="user_password">Enter Password</label>
                 <input name="user_password" type="password" class="form-control" placeholder="Password">
             </div>
+            
+            <!-- Submission button -->
             <button class="btn waves-effect waves-light" type="submit">Log in</button>
         </div>
     </form>
 </div>
-
 {% endblock %}
