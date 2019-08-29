@@ -6,21 +6,22 @@
             <h3>Create an account</h3>
             <!-- Username Input Field -->
             <div class="input-field col s12">
+                <small><i class="fas fa-info-circle"></i>Username must be between 6 and 20 characters long</small>
                 <label for="username">Create Username</label>
-                <input name="username" type="text" id="sign-in-username" placeholder="Enter Username">
-                <small class="form-text form-info"><i class="fas fa-info-circle"></i> Make sure to pay attention to capitals as your Username AND Password will be case sensitive. Your Username will be the name that appears on your Profile Page and will be displayed as the Author when you create a recipe. </small>
+                <input name="username" type="text" id="sign-in-username" placeholder="Enter Username" minlength="6" maxlength="20" required>
             </div>
 
             <!-- Password Input Field -->
             <div class="input-field col s12">
+                <small><i class="fas fa-info-circle"></i>Password must be between 5 and 20 characters long</small>
                 <label for="user_password">Create Password</label>
-                <input name="user_password" type="password" class="form-control" id="sign-in-password" placeholder="Enter Password">
+                <input name="user_password" type="password" class="form-control" id="sign-in-password" placeholder="Enter Password" minlength="5" maxlength="20" required>
             </div>
 
             <!-- Password Verification Input Field -->
             <div class="input-field col s12">
                 <label for="user_password1">Confirm Password</label>
-                <input name="user_password1" type="password" class="form-control" id="sign-in-password1" placeholder="Confirm Password">
+                <input name="user_password1" type="password" class="form-control" id="sign-in-password1" placeholder="Confirm Password" required>
             </div>
 
             <!-- Register New User Submit Button -->
