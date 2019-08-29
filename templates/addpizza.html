@@ -70,7 +70,7 @@
             <h4>Additional Notes</h4>
             <div class="input-field col s12">
                 <i class="material-icons prefix">subject</i>
-                <textarea name="pizza_notes" id="pizza_notes" class="materialize-textarea"></textarea>
+                <textarea name="pizza_notes" id="pizza_notes" class="materialize-textarea" maxlength="50"></textarea>
                 <label for="icon_telephone">Pizza Notes</label>
             </div>
         </div>
@@ -78,7 +78,10 @@
         <div class="row">
             <button class="btn waves-effect waves-light" type="submit">Add Pizza
                 <i class="material-icons right">playlist_add</i>
-             </button>
+            </button>
+            <a href="{{url_for('get_pizzas')}}" class="waves-effect waves-light btn">Go Back
+                <i class="material-icons right">arrow_back</i>
+            </a>
         </div>
     </form>
 </div>
