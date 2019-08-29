@@ -74,26 +74,26 @@ def insert_pizza():
     mongo.db.pizzas.insert_one(complex)
     return redirect(url_for('get_pizzas'))
 
-
-
-@app.route('/get_toppings')
-def get_toppings():
-    return render_template('toppings.html',
-                           meats = meats,
-                           vegs = vegs)
-
+# Route to pass meats and vegs to addtopping.html
 @app.route('/add_topping')
 def add_topping():
     return render_template('addtopping.html',
     meats = meats,
     vegs = vegs)
 
-
+# Route to pass meats to addmeat.html
 @app.route('/add_meat')
 def add_meat():
     return render_template("addmeat.html", 
                            meats = meats)
-                           
+
+# Route to pass vegs to addveg.html             
+@app.route('/add_veg')
+def add_veg():
+    return render_template("addveg.html", 
+                           vegs = vegs)             
+    
+# Route for inserting a new meat into the meats array                           
 @app.route('/insert_meat_topping/<meat_id>', methods=['POST'])
 def insert_meat_topping(meat_id):
     mongo.db.ingredients.update(
@@ -101,12 +101,8 @@ def insert_meat_topping(meat_id):
         {'$addToSet':{'meats' : request.form.get('meats')}},
         upsert=True)
     return redirect(url_for('get_pizzas'))
-    
-@app.route('/add_veg')
-def add_veg():
-    return render_template("addveg.html", 
-                           vegs = vegs)
-                           
+
+# Route for inserting a new veg into the vegs array                            
 @app.route('/insert_veg_topping/<veg_id>', methods=['POST'])
 def insert_veg_topping(veg_id):
     mongo.db.ingredients.update(
@@ -114,7 +110,8 @@ def insert_veg_topping(veg_id):
         {'$addToSet':{'vegs' : request.form.get('vegs')}},
         upsert=True)
     return redirect(url_for('get_pizzas'))
-                        
+                     
+# Route to edit the selected pizza                        
 @app.route('/edit_pizza/<pizza_id>')
 def edit_pizza(pizza_id):
     the_pizza =  mongo.db.pizzas.find_one({"_id": ObjectId(pizza_id)})
@@ -125,6 +122,7 @@ def edit_pizza(pizza_id):
                             meats = meats,
                             vegs = vegs)
 
+# Route to update selected pizza with any edits made
 @app.route('/update_pizza/<pizza_id>', methods=["POST"])
 def update_pizza(pizza_id):
     pizzas = mongo.db.pizzas
@@ -143,19 +141,16 @@ def update_pizza(pizza_id):
         })
     return redirect(url_for('get_pizzas'))
 
+# Route to delete selected pizza
 @app.route('/delete_task/<pizza_id>')
 def delete_pizza(pizza_id):
     mongo.db.pizzas.remove({'_id': ObjectId(pizza_id)})
     return redirect(url_for('get_pizzas'))
 
+#########################################################################################
 # Taken and modified from Miroslav Svec's (username Miro) sessions from Slack DCD channel
-# Login - taken and modified from Miroslav Svec's (username Miro) sessions from Slack DCD channel
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    """
-    Logs the user into the website. 
-    """
-
     # Check if user is not logged in already
     if 'user' in session:
         user_in_db = users.find_one({"username": session['user']})
@@ -166,12 +161,10 @@ def login():
     else:
         # Render the page for user to be able to log in
         return render_template("login.html")
-        
+    
+# Route to check is user login details are in the system
 @app.route('/user_auth', methods=['GET','POST'])
 def user_auth():
-    """
-    Checks user login details from login form
-    """
     
     form = request.form.to_dict()
     user_in_db = users.find_one({"username": form['username']})
@@ -190,13 +183,9 @@ def user_auth():
         return redirect(url_for('register'))
 
 
-# Sign up - taken and modified from Miroslav Svec's (username Miro) sessions from Slack DCD channel
+# Route for user registration
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    """
-    Registers new users to the website.
-    """
-    
     # Check if user is not logged in already
     if 'user' in session:
         flash('You are already signed in!')
@@ -239,20 +228,17 @@ def register():
 
     return render_template("register.html")
 
-# Log out- taken and modified from Miroslav Svec's (username Miro) sessions from Slack DCD channel
+# Route to log user out
 @app.route('/logout')
 def logout():
-    """
-    Logs the users out of the session
-    """
-    
-    
     # Clear the session
     session.clear()
     flash('You have been logged out!')
     return redirect(url_for('get_pizzas'))
 
+################################################################################
 
+# Route for users account page
 @app.route('/account/<user>')
 def account(user):
     user_account = users.find({'username': user})
