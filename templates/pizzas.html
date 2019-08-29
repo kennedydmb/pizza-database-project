@@ -2,44 +2,46 @@
 <div class="row">
     {% for pizza in pizzas %}
     <div class=" col s12 m6">
-        <div class="card card-img">
+        <div class="card">
             <div class="topping-color">
-                <a href="{{url_for('edit_pizza', pizza_id=pizza._id)}}">
-                    <h4 class="">{{ pizza.pizza_name.title() }} - ({{pizza.pizza_code|upper}})</h4>
-                </a>
-                <div class="col s12 ">
-                    <h5 class="center-align">Toppings</h5>
-                    <hr/>
-                </div>
-                <div class="col s6">
-                    <i class="cheese tiny material-icons">brightness_1</i><span class="topping-space topping-weight">{{pizza.cheese_type.capitalize()}}</span>
-                </div>
-                <div class="col s6">
-                    <i class="sauce tiny material-icons">brightness_1</i><span class="topping-space topping-weight">{{pizza.sauce_type|title}} Sauce</span>
-                </div>
-                <div class="col s6 ">
-                    {% for topping in pizza.toppings %} {% for veg in vegs.vegs %}
-                    <ul>
-                        {% if veg|lower == topping|lower %}
-                        <li>
-                            <i class="veg tiny material-icons">brightness_1</i>
-                            <span class="topping-weight">{{topping.capitalize()}}</span>
-                        </li>
-                        {% endif %}
-                    </ul>
-                    {% endfor %} {% endfor %}
-                </div>
-                <div class="col s6 ">
-                    {% for topping in pizza.toppings %} {% for meat in meats.meats %}
-                    <ul>
-                        {% if meat|lower == topping|lower %}
-                        <li>
-                            <i class="meat tiny material-icons">brightness_1</i>
-                            <span class="topping-weight">{{topping.capitalize()}}</span>
-                        </li>
-                        {% endif %}
-                    </ul>
-                    {% endfor %} {% endfor %}
+                <div class="pizza-box">
+                    <a href="{{url_for('edit_pizza', pizza_id=pizza._id)}}">
+                        <h4 class="small-screen-header card-img">{{ pizza.pizza_name.title() }} - ({{pizza.pizza_code|upper}})</h4>
+                    </a>
+                    <div class="col s12 ">
+                        <h5 class="center-align">Toppings</h5>
+                        <hr/>
+                    </div>
+                    <div class="col s6">
+                        <i class="cheese tiny material-icons">brightness_1</i><span class="topping-space topping-weight">{{pizza.cheese_type.capitalize()}}</span>
+                    </div>
+                    <div class="col s6">
+                        <i class="sauce tiny material-icons">brightness_1</i><span class="topping-space topping-weight">{{pizza.sauce_type|title}} Sauce</span>
+                    </div>
+                    <div class="col s6 ">
+                        {% for topping in pizza.toppings %} {% for veg in vegs.vegs %}
+                        <ul>
+                            {% if veg|lower == topping|lower %}
+                            <li>
+                                <i class="veg tiny material-icons">brightness_1</i>
+                                <span class="topping-weight">{{topping.capitalize()}}</span>
+                            </li>
+                            {% endif %}
+                        </ul>
+                        {% endfor %} {% endfor %}
+                    </div>
+                    <div class="col s6 ">
+                        {% for topping in pizza.toppings %} {% for meat in meats.meats %}
+                        <ul>
+                            {% if meat|lower == topping|lower %}
+                            <li>
+                                <i class="meat tiny material-icons">brightness_1</i>
+                                <span class="topping-weight">{{topping.capitalize()}}</span>
+                            </li>
+                            {% endif %}
+                        </ul>
+                        {% endfor %} {% endfor %}
+                    </div>
                 </div>
                 <div class="col s12 ">
                     <hr/>
@@ -47,12 +49,13 @@
                         Added By: {{ pizza.creator.username|title }}
                     </p>
                 </div>
-
-                <div class="col s12 ">
+                <div class="col s12">
                     <hr/>
-                    <p>
-                        Notes: {{pizza.pizza_notes}}
-                    </p>
+                    <div class="notes-box">
+                        <p>
+                            Notes: {{pizza.pizza_notes}}
+                        </p>
+                    </div>
                 </div>
                 <div class="col s12">
                     <a href="{{url_for('edit_pizza', pizza_id=pizza._id)}}" class="waves-effect waves-light btn btn-small blue">Edit</a>
