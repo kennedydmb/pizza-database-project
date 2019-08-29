@@ -9,7 +9,12 @@
 }
 
 .card {
-    min-height: 550px;
+    min-height: 600px;
+    background-image: linear-gradient(to bottom, #202840, black) !important;
+}
+
+.pizza-box {
+    min-height: 390px;
 }
 
 .add-topping-box {
@@ -23,11 +28,14 @@
     line-height: 150px;
 }
 
+.notes-box {
+    min-height: 65px;
+}
 
 /* Colors ------------------------------------------------------------------- */
 
 body {
-    background-color: #809FFF;
+    background-color: #2f3a5d;
 }
 
 .meat {
@@ -99,12 +107,6 @@ nav {
     font-weight: 800;
 }
 
-.btn-fix {
-    position: absolute;
-    right: 0px;
-    bottom: 12px;
-}
-
 /* Changes to defaults--------------------------------------------------*/
 
 h4,
@@ -116,6 +118,8 @@ h1 {
     color: white;
     background-color: #202840;
     font-family: nunito;
+    font-weight: 800 !important;
+    text-shadow: 0px 0px 10px #000000;
 }
 
 /* Images --------------------------------------------------------------------*/
@@ -142,3 +146,9 @@ span {
     font-family: nunito;
 }
 
+
+@media only screen and (max-width: 410px) {
+  .small-screen-header {
+    font-size: 20px !important;
+  }
+}
