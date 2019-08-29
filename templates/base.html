@@ -65,6 +65,18 @@
             $('select').formSelect();
             $('.sidenav').sidenav();
         });
+        $('input[type=checkbox]').on('change', function(e) {
+            if ($('input[class="meat-topping-picker"]:checked').length > 5) {
+                $(this).prop('checked', false);
+                alert("Max 5 meat toppings");
+            }
+        });
+        $('input[type=checkbox]').on('change', function(e) {
+            if ($('input[class="veg-topping-picker"]:checked').length > 5) {
+                $(this).prop('checked', false);
+                alert("Max 5 veg toppings");
+            }
+        });
     </script>
 </body>
 
