@@ -1,7 +1,10 @@
 {% extends 'base.html'%} {% block content %}
 <div class="container">
+    <!-- Header showing name of user -->
     <h3 class="center-align">{{ user|title }}'s Account</h3>
     <div class="row box col s12">
+
+        <!-- Shows a list of pizzas contributed by user -->
         <div class="col s12 m6">
             <p class="account-pizza-list">
                 <b>Pizzas contributed:</b>
@@ -13,33 +16,32 @@
             </ul>
         </div>
 
+        <!-- Shows a list of helpful links -->
         <div class="col s12 m6 center-align">
             <p>
                 <b>Quick Links:</b>
             </p>
             <div class="account-btn-height ">
                 <ul>
+                    <!-- Back to homepage -->
                     <li><a href="{{url_for('get_pizzas')}}" class="waves-effect waves-light btn account-btn-width">Go Back
-                <i class="material-icons right">arrow_back</i>
-            </a></li>
-
+                        <i class="material-icons right">arrow_back</i></a>
+                    </li>
+                    <!-- Add new pizza -->
                     <li><a href="{{url_for('add_pizza')}}" class="waves-effect waves-light btn account-btn-width">Add Pizza
-                <i class="material-icons right">playlist_add</i>
-            </a></li>
-
+                        <i class="material-icons right">playlist_add</i></a>
+                    </li>
+                    <!-- Add new topping -->
                     <li><a href="{{url_for('add_topping')}}" class="waves-effect waves-light btn account-btn-width">Go Back
-                <i class="material-icons right">add</i>
-            </a></li>
-
+                        <i class="material-icons right">add</i></a>
+                    </li>
+                    <!-- Logout -->
                     <li><a href="{{url_for('logout')}}" class="waves-effect waves-light btn account-btn-width red">Logout
-                <i class="material-icons right">add</i>
-            </a></li>
-
+                        <i class="material-icons right">exit_to_app</i></a>
+                    </li>
                 </ul>
             </div>
         </div>
-
-
     </div>
 </div>
 {% endblock %}
