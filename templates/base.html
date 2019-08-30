@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pizza Database</title>
-    
+
     <!-- Custom Tab Icon -->
     <link rel="icon" href="https://i.imgur.com/OtkEAef.png">
-    
+
     <!-- Link to materialize icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -37,20 +37,20 @@
 
                     <ul class="right hide-on-med-and-down">
                         {% if session.user %}
-                        <!--- If user is signed in, they will see the below navbar links --->
+                        <!-- If user is signed in, they will see the below navbar links -->
                         <li><a href="{{url_for('add_pizza')}}">Add Pizza</a></li>
                         <li><a href="{{url_for('add_topping')}}">Add Topping</a></li>
                         <li><a href="{{url_for('account', user=session.user)}}">My Account</a></li>
                         <li><a href="{{url_for('logout')}}">Log Out</a></li>
 
                         {% else %}
-                        <!--- If user is not signed in, they will see the below navbar links  -->
-                        <!--- Login --->
+                        <!-- If user is not signed in, they will see the below navbar links  -->
+                        <!-- Login -->
                         <li>
                             <a href="{{url_for('login')}}">Login</a>
                         </li>
 
-                        <!--- Registration --->
+                        <!-- Registration -->
                         <li>
                             <a href="{{url_for('register')}}">Register</a>
                         </li>
@@ -63,20 +63,20 @@
 
         <ul class="sidenav" id="mobile-demo">
             {% if session.user %}
-            <!--- If user is signed in, they will see the below navbar links --->
+            <!-- If user is signed in, they will see the below navbar links -->
             <li><a href="{{url_for('add_pizza')}}">Add Pizza</a></li>
             <li><a href="{{url_for('add_topping')}}">Add Topping</a></li>
             <li><a href="{{url_for('account', user=session.user)}}">My Account</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url_for('logout')}}">Log Out</a></li>
 
             {% else %}
-            <!--- If user is not signed in, they will see the below navbar links  -->
-            <!--- Login Link  --->
+            <!-- If user is not signed in, they will see the below navbar links  -->
+            <!-- Login Link  -->
             <li class="nav-item">
                 <a class="nav-link" href="{{url_for('login')}}">Login</a>
             </li>
 
-            <!--- Register Link  --->
+            <!-- Register Link  -->
             <li class="nav-item">
                 <a class="nav-link" href="{{url_for('register')}}">Register</a>
             </li>
@@ -126,7 +126,5 @@
         });
     </script>
 </body>
-
-</html>
 
 </html>
