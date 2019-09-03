@@ -73,6 +73,10 @@ body {
     color: orange;
 }
 
+.btn {
+    background-color: #000A27!important;
+}
+
 /* Fixes -------------------------------------------------------------------- */
 
 /* Fixes alignment of text with checkboxes*/

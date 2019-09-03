@@ -48,7 +48,7 @@ who has served the longest, how many employees do I have, what percentage of my
 workers are performing to the standard I have set.
 
 ### Wireframe
-![Wireframe](https://i.imgur.com/Apq88Gl.jpg?1 "Original Web App Wireframe")
+Wireframe can be found [here](https://i.imgur.com/suCL447.jpg?1 "Original Web App Wireframe")
 
 #### Difference To Deployed Version
 - Layout of each pizza card remains mostly the same. Pizza code is now sat beside each
@@ -125,22 +125,25 @@ For the color palate I used this [color scheme website](http://colorschemedesign
 
 ### Existing Features
 
-#### Pizza Recipe Display
+#### Add New Pizza (Create)
+Once a user has logged in or registered they can add new pizzas and toppings to the database.
+User can choose a name, sauce type, cheese type, choose a code, then pick up to 4 toppings per topping category.
+
+#### Pizza Recipe Display (Read)
 Pizza recipes display as cards to the user with links to edit them.
+
+#### Edit Existing Pizza (Update)
+If a user chooses to edit a pizza they will see the forms and check boxes with 
+the existing data. They can then change this and either update the database or they can delete pizzas from the database
+
+#### Delete Pizza (Delete)
+Users can delete pizzas by first selecting the edit button, then selecting delete button, this was done to reduce the liklihood of accidentally deleted pizzas.
 
 #### Pagination
 Each page shows 6 recipies to the user.
 
 #### Login/Register
 User can register to the website, and once don so they have access to more features.
-
-#### Add New Pizza
-Once a user has logged in or registered they can add new pizzas and toppings to the database.
-User can choose a name, sauce type, cheese type, choose a code, then pick up to 4 toppings per topping category.
-
-#### Edit Existing Pizza
-If a user chooses to edit a pizza they will see the forms and check boxes with 
-the existing data. They can then change this and either update the database or they can delete pizzas from the database
 
 #### Add Topping
 Users can add toppings to the database once they have logged in. They can choose to add either meat or veg to the database.
@@ -164,6 +167,9 @@ In future users would be able to do both.
 The ability to not only delete pizzas, but archive pizzas. If the database was 
 used for training purposes, then seasonal pizzas could be archived and brought back
 at a later date.
+
+#### Edit permissions
+Currently any user can edit any pizza, in future only the user that created the recipe could edit the recipe.
 
 #### Change User Password
 At the moment users cannot change their password. But will in future.
