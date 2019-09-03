@@ -74,7 +74,7 @@ body {
 }
 
 .btn {
-    background-color: #000A27!important;
+    background-color: #000A27 !important;
 }
 
 /* Fixes -------------------------------------------------------------------- */
@@ -124,6 +124,10 @@ nav {
 
 .account-pizza-list{
     padding-left: 25px;
+}
+
+.align-right {
+    text-align: right;
 }
 
 /* Changes to defaults--------------------------------------------------*/
