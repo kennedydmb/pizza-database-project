@@ -150,6 +150,11 @@ Users can add toppings to the database once they have logged in. They can choose
 
 ### Future Features
 
+#### Search Functionality
+A searchbar where users could find recipes matching their search queries. A searchbar 
+with advanced features such as sorting by name alphabetically, by sauce type, by 
+cheese type, by toppings, by creator etc.
+
 #### Admin Features
 A seperate admin log in and general user log in. General users would be able to 
 log in, browse pizzas, post pizzas, edit, or add toppings to be approved by the admin.
